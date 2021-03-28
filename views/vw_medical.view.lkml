@@ -113,7 +113,7 @@ view: vw_medical {
     datatype: date
     label: "DIAGOSIS"
     drill_fields: [diagnosis_year, diagnosis_quarter, diagnosis_month, diagnosis_raw]
-    sql: ${TABLE}."DIAGNOSIS_DATE" ;;
+    sql: ${TABLE}."PAID_DATE" ;;
   }
 
   dimension: disease_group {
