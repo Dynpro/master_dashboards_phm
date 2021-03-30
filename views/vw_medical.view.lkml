@@ -469,7 +469,7 @@ view: vw_medical {
 
   measure: Total_Patients {
     type: count_distinct
-    label: "TOTAL PATIENTS"
+    label: "N"
     sql:  ${unique_id} ;;
   }
 
@@ -482,14 +482,14 @@ view: vw_medical {
 
   measure: Total_Paid_Amt {
     type: sum
-    label: "TOTAL PAID AMT"
+    label: "TOTAL $"
     sql:  ${Total_Paid_Amount} ;;
     value_format: "$#,##0.00"
   }
 
   measure: Avg_Total_Paid_amount {
     type: number
-    label: "MEAN PAID AMT"
+    label: "MEAN $"
     sql:  CASE WHEN ${Total_Patients} <> 0 THEN ${Total_Paid_Amt}/${Total_Patients}
         ELSE 0
         END;;
