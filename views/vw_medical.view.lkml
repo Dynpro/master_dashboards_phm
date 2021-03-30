@@ -484,7 +484,7 @@ view: vw_medical {
     type: sum
     label: "TOTAL $"
     sql:  ${Total_Paid_Amount} ;;
-    value_format: "$#,##0.00"
+    value_format: "$#,##0"
   }
 
   measure: Avg_Total_Paid_amount {
@@ -493,7 +493,7 @@ view: vw_medical {
     sql:  CASE WHEN ${Total_Patients} <> 0 THEN ${Total_Paid_Amt}/${Total_Patients}
         ELSE 0
         END;;
-    value_format: "$#,##0.00"
+    value_format: "$#,##0"
   }
 
   measure: count {

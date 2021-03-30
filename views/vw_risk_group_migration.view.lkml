@@ -44,14 +44,14 @@ view: vw_risk_group_migration {
     type: sum
     label: "Total $"
     sql: ${TABLE}."TOTAL_PAID_AMT" ;;
-    value_format: "$#,##0.00"
+    value_format: "$#,##0"
   }
 
   measure: Mean_paid_amt {
     type: average
     label: "Mean $"
     sql: ${TABLE}."AVERAGE_PAID_AMT" ;;
-    value_format: "$#,##0.00"
+    value_format: "$#,##0"
   }
 
   measure: Total_Patients {
