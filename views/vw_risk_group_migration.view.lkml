@@ -42,18 +42,21 @@ view: vw_risk_group_migration {
 
   measure: Total_paid_amt {
     type: sum
+    label: "Total $"
     sql: ${TABLE}."TOTAL_PAID_AMT" ;;
     value_format: "$#,##0.00"
   }
 
   measure: Mean_paid_amt {
     type: average
+    label: "Mean $"
     sql: ${TABLE}."AVERAGE_PAID_AMT" ;;
     value_format: "$#,##0.00"
   }
 
   measure: Total_Patients {
     type: count_distinct
+    label: "N"
     sql:  ${Unique_id};;
   }
 
