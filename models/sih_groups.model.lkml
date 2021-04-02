@@ -10,6 +10,13 @@ datagroup: sih_groups_default_datagroup {
 
 persist_with: sih_groups_default_datagroup
 
-explore: vw_medical {}
+explore: vw_medical {
+  join: vw_risk_group_migration {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${vw_medical.unique_id} = ${vw_risk_group_migration.Unique_id} AND
+            ${vw_medical.paid_year} = ${vw_risk_group_migration.File_year};;
+  }
+}
 
 explore: vw_risk_group_migration {}
