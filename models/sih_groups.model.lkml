@@ -11,12 +11,37 @@ datagroup: sih_groups_default_datagroup {
 persist_with: sih_groups_default_datagroup
 
 explore: vw_medical {
-  join: vw_risk_group_migration {
-    type: left_outer
-    relationship: many_to_one
-    sql_on: ${vw_medical.unique_id} = ${vw_risk_group_migration.Unique_id} AND
-            ${vw_medical.paid_year} = ${vw_risk_group_migration.File_year};;
-  }
+  label: "Medical records"
 }
 
-explore: vw_risk_group_migration {}
+explore: vw_pharmacy {
+  label: "Pharmacy records"
+}
+
+explore: vw_med_and_pharma_summary_1 {
+  label: "Ad Hoc Query Tool"
+}
+
+explore: ad_hoc_query_tool_medical {
+  label: "Ad Hoc Query Tool_MEDICAL"
+}
+
+explore: ad_hoc_query_tool_pharmacy {
+  label: "Ad Hoc Query Tool_PHARMACY"
+}
+
+explore: vw_cohort_analysis_summary_1 {
+  label: "Cohort Analysis"
+}
+
+explore: vw_risk_group_migration {
+  label: "Risk Group Migration"
+}
+
+explore: vw_risk_group_med_pharma_summary {
+  label: "Risk Group - Med & Pharma summary"
+}
+
+explore: vw_medication_possession_ratio {
+  label: "Medication Possession Ratio"
+}
