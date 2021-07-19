@@ -218,7 +218,7 @@ view: vw_medical {
 
   dimension: icd_preventative {
     type: string
-    label: "PREVENTATIVE ?"
+    label: "PREVENTIVE ?"
     sql: ${TABLE}."ICD_PREVENTATIVE" ;;
   }
 
@@ -582,10 +582,10 @@ view: vw_medical {
 
   dimension: LSModify_or_Preventive_disease {
     type: string
-    label: "LIFESTYLE MODIFIABLE OR PREVENTATIVE DISEASE"
+    label: "LIFESTYLE MODIFIABLE OR PREVENTIVE DISEASE"
     sql: CASE WHEN ${icd_ls_modify} = 'TRUE' THEN 'LIFESTYLE MODIFIABLE DISEASE'
-        WHEN ${icd_preventative} = 'TRUE' THEN 'PREVENTATIVE DISEASE'
-        ELSE 'NON_LIFESTYLE MODIFIABLE DISEASE & NON-PREVENTATIVE DISEASE'
+        WHEN ${icd_preventative} = 'TRUE' THEN 'PREVENTIVE DISEASE'
+        ELSE 'NON_LIFESTYLE MODIFIABLE DISEASE & NON-PREVENTIVE DISEASE'
         END;;
   }
 
