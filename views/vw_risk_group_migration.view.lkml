@@ -3,7 +3,7 @@ view: vw_risk_group_migration {
   derived_table: {
     sql: select * from "SCH_SIH"."VW_RISK_GROUP_MIGRATION"
           WHERE
-          UNIQUE_ID IN (select DISTINCT UNIQUE_ID from "SCH_KAIROS_ARKANSAS_MUNICIPAL_LEAGUE"."VW_MEDICAL"
+          UNIQUE_ID IN (select DISTINCT UNIQUE_ID from "SCH_SIH"."VW_MEDICAL"
           WHERE
           {% condition DISEASE_CATEGORY %} "ICD_DISEASE_CATEGORY" {% endcondition %} AND
           {% condition DISEASE_DESCRIPTION %} "ICD_DESCRIPTION" {% endcondition %} AND
