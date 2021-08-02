@@ -22,7 +22,7 @@ explore: vw_med_and_pharma_summary_1 {
 
 explore: ad_hoc_query_tool_medical {
   label: "Ad Hoc Query Tool_MEDICAL"
-  sql_always_where: ${PAID_DATE_year} IN ('2018', '2019', '2020') ;;
+  sql_always_where: ${PAID_DATE_year} IN ('2019', '2020') ;;
 }
 
 explore: ad_hoc_query_tool_pharmacy {
@@ -32,25 +32,25 @@ explore: ad_hoc_query_tool_pharmacy {
 
 explore: vw_cohort_analysis_summary_1 {
   label: "Cohort Analysis"
-  sql_always_where: ${PAID_YEAR} IN ('2018', '2019', '2020') ;;
+  sql_always_where: ${PAID_YEAR} IN ('2019', '2020') ;;
 }
 
 explore: vw_risk_group_migration {
   label: "Risk Group Migration"
-  sql_always_where: ${File_year} IN ('2018', '2019', '2020') ;;
+  sql_always_where: ${File_year} IN ('2019', '2020') ;;
 }
 
 explore: vw_risk_group_med_pharma_summary {
   label: "Risk Group - Med & Pharma summary"
-  sql_always_where: ${File_year} IN ('2018', '2019', '2020') ;;
+  sql_always_where: ${File_year} IN ('2019', '2020') ;;
 }
 
 explore: vw_medication_possession_ratio {
   label: "Medication Possession Ratio"
-  sql_always_where: ${year} IN ('2018', '2019', '2020') ;;
+  sql_always_where: ${year} IN ('2019', '2020') ;;
 }
 
 explore: vw_preventive_screening {
   label: "Preventive Screening"
-  sql_always_having: ${year} IN ('2018', '2019', '2020') ;;
+  sql_always_having: ${year} IN ('2019', '2020') ;;
 }
