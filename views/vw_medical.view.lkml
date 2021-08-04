@@ -712,7 +712,7 @@ view: vw_medical {
 
   measure: Breast_Cancer_Screening_Rate {
     type: number
-    value_format: "0"
+    value_format: "0.0\%"
     sql: CASE WHEN ${Eligible_Breast_Cancer_Screening} = 0 THEN 0
         ELSE ${Breast_Cancer_Screening}*100/${Eligible_Breast_Cancer_Screening}
         END ;;
@@ -727,7 +727,7 @@ view: vw_medical {
 
   measure: Cervical_Cancer_Screening_Rate {
     type: number
-    value_format: "0"
+    value_format: "0.0\%"
     sql: CASE WHEN ${Eligible_Cervical_Cancer_Screening} = 0 THEN 0
         ELSE ${Cervical_Cancer_Screening}*100/${Eligible_Cervical_Cancer_Screening}
         END ;;
@@ -742,7 +742,7 @@ view: vw_medical {
 
   measure: Colon_Cancer_Screening_Rate {
     type: number
-    value_format: "0"
+    value_format: "0.0\%"
     sql: CASE WHEN ${Eligible_Colon_Cancer_Screening} = 0 THEN 0
         ELSE ${Colon_Cancer_Screening}*100/${Eligible_Colon_Cancer_Screening}
         END ;;
