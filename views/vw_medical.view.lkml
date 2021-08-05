@@ -920,7 +920,10 @@ view: vw_medical {
   dimension: PARTICIPANT_FLAG {
     type: string
     label: "Participant flag"
-    sql: ${TABLE}."PARTICIPANT_FLAG" ;;
+    sql: CASE WHEN ${TABLE}."PARTICIPANT_FLAG" = 'true' THEN 'PARTICIPANT'
+    WHEN ${TABLE}."PARTICIPANT_FLAG" = 'false' THEN 'NON-PARTICIPANT'
+    ELSE 'OTHERS'
+    END ;;
   }
 
 }
