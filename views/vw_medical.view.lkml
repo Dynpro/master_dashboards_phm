@@ -917,4 +917,10 @@ view: vw_medical {
     html: {{ rendered_value | date: "%m / %d / %Y" }} ;;
   }
 
+  dimension: PARTICIPANT_FLAG {
+    type: string
+    label: "Participant flag"
+    sql: ${TABLE}."PARTICIPANT_FLAG" ;;
+  }
+
 }
