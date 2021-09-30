@@ -60,3 +60,13 @@ explore: vw_preventive_screening {
   label: "Preventive Screening"
   sql_always_having: ${year} IN ('2018', '2019', '2020') ;;
 }
+
+explore: hedis_measure {
+  join: vw_patient_demographics {
+    view_label: "Patient Demographics"
+    type: left_outer
+    relationship: one_to_one
+    sql_on: ${hedis_measure.unique_id} = ${vw_patient_demographics.unique_id} ;;
+  }
+  label: "HEDIS Measures"
+}

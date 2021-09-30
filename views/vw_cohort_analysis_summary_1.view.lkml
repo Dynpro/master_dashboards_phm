@@ -102,7 +102,8 @@ view: vw_cohort_analysis_summary_1 {
               {% condition ICD_PREVENTATIVE_G1 %} M1."ICD_PREVENTATIVE" {% endcondition %} AND
               {% condition 2012_CHRONIC_G1 %} M1."2012_CHRONIC" {% endcondition %} AND
               {% condition ICD_AVOIDABLE_ER_G1 %} M1."ICD_AVOIDABLE_ER" {% endcondition %} AND
-              {% condition ICD_DIGESTIVE_DISEASE_G1 %} M1."ICD_DIGESTIVE_DISEASE" {% endcondition %}
+              {% condition ICD_DIGESTIVE_DISEASE_G1 %} M1."ICD_DIGESTIVE_DISEASE" {% endcondition %} AND
+              {% condition RISK_GROUP_G1 %} M1."RISK_GROUP" {% endcondition %}
 
             GROUP BY PATIENT_ID_M_G1, PAID_YEAR_G1, PATIENT_GENDER_G1, RELATIONSHIP_TO_EMPLOYEE_G1) as MED1
 
@@ -179,14 +180,14 @@ view: vw_cohort_analysis_summary_1 {
               {% condition DISEASE_CATEGORY_G2 %} M2."ICD_DISEASE_CATEGORY" {% endcondition %} AND
               {% condition DESCRIPTION_G2 %} M2."ICD_DESCRIPTION" {% endcondition %} AND
 
-              {% condition RECONCILED_DIAGNOSIS_CODE_ICD10_G2 %} M1."RECONCILED_DIAGNOSIS_CODE_ICD10" {% endcondition %} AND
-              {% condition PATIENT_AGE_G2 %} M1."PATIENT_AGE" {% endcondition %} AND
-              {% condition AGE_GROUP_1_G2 %} M1."AGE_GROUP_1" {% endcondition %} AND
-              {% condition JOB_TYPE_G2 %} M1."JOB_TYPE" {% endcondition %} AND
-              {% condition JOB_DESIGNATION_G2 %} M1."JOB_DESIGNATION" {% endcondition %} AND
-              {% condition ADDRESS_ZIP_CODE_G2 %} M1."ADDRESS_ZIP_CODE" {% endcondition %} AND
-              {% condition ADDRESS_CITY_G2 %} M1."ADDRESS_CITY" {% endcondition %} AND
-              {% condition ADDRESS_STATE_G2 %} M1."ADDRESS_STATE" {% endcondition %} AND
+              {% condition RECONCILED_DIAGNOSIS_CODE_ICD10_G2 %} M2."RECONCILED_DIAGNOSIS_CODE_ICD10" {% endcondition %} AND
+              {% condition PATIENT_AGE_G2 %} M2."PATIENT_AGE" {% endcondition %} AND
+              {% condition AGE_GROUP_1_G2 %} M2."AGE_GROUP_1" {% endcondition %} AND
+              {% condition JOB_TYPE_G2 %} M2."JOB_TYPE" {% endcondition %} AND
+              {% condition JOB_DESIGNATION_G2 %} M2."JOB_DESIGNATION" {% endcondition %} AND
+              {% condition ADDRESS_ZIP_CODE_G2 %} M2."ADDRESS_ZIP_CODE" {% endcondition %} AND
+              {% condition ADDRESS_CITY_G2 %} M2."ADDRESS_CITY" {% endcondition %} AND
+              {% condition ADDRESS_STATE_G2 %} M2."ADDRESS_STATE" {% endcondition %} AND
 
               {% condition CHRONIC_CATEGORY_G2 %} M2."ICD_CHRONIC_CAT" {% endcondition %} AND
               {% condition PATIENT_GENDER_G2 %} M2."PATIENT_GENDER" {% endcondition %} AND
@@ -195,13 +196,14 @@ view: vw_cohort_analysis_summary_1 {
               {% condition ICD_MAJOR_DISEASE_G2 %} M2."ICD_MAJOR_DISEASE" {% endcondition %} AND
               {% condition PROCEDURE_CODE_TYPE_G2 %} M2."PROCEDURE_CODE_TYPE" {% endcondition %} AND
               {% condition PROCEDURE_DESCRIPTION_G2 %} M2."PROCEDURE_DESCRIPTION" {% endcondition %} AND
-              {% condition PRIMARY_PROCEDURE_CODE_G2 %} M1."PRIMARY_PROCEDURE_CODE" {% endcondition %} AND
+              {% condition PRIMARY_PROCEDURE_CODE_G2 %} M2."PRIMARY_PROCEDURE_CODE" {% endcondition %} AND
               {% condition ICD_LS_MODIFY_G2 %} M2."ICD_LS_MODIFY" {% endcondition %} AND
               {% condition ICD_ACUTE_G2 %} M2."ICD_ACUTE" {% endcondition %} AND
               {% condition ICD_PREVENTATIVE_G2 %} M2."ICD_PREVENTATIVE" {% endcondition %} AND
               {% condition 2012_CHRONIC_G2 %} M2."2012_CHRONIC" {% endcondition %} AND
               {% condition ICD_AVOIDABLE_ER_G2 %} M2."ICD_AVOIDABLE_ER" {% endcondition %} AND
-              {% condition ICD_DIGESTIVE_DISEASE_G2 %} M2."ICD_DIGESTIVE_DISEASE" {% endcondition %}
+              {% condition ICD_DIGESTIVE_DISEASE_G2 %} M2."ICD_DIGESTIVE_DISEASE" {% endcondition %} AND
+              {% condition RISK_GROUP_G2 %} M2."RISK_GROUP" {% endcondition %}
 
             GROUP BY PATIENT_ID_M_G2, PAID_YEAR_G2, PATIENT_GENDER_G2, RELATIONSHIP_TO_EMPLOYEE_G2) AS MED2
 
@@ -343,7 +345,7 @@ view: vw_cohort_analysis_summary_1 {
   }
 
   filter: PATIENT_AGE_G1 {
-    type: string
+    type: number
     label: "G1 - PATIENT AGE"
     suggest_explore: vw_medical
     suggest_dimension: vw_medical.patient_age
@@ -439,6 +441,14 @@ view: vw_cohort_analysis_summary_1 {
     suggest_explore: vw_medical
     suggest_dimension: vw_medical.icd_digestive_disease
   }
+
+  filter: RISK_GROUP_G1 {
+    type: string
+    label: "G1 - RISK GROUP"
+    suggest_explore: vw_medical
+    suggest_dimension: vw_medical.RISK_GROUP
+  }
+
 
   dimension: PATIENT_ID_G1 {
     type: string
@@ -660,7 +670,7 @@ view: vw_cohort_analysis_summary_1 {
   }
 
   filter: PATIENT_AGE_G2 {
-    type: string
+    type: number
     label: "G2 - PATIENT AGE"
     suggest_explore: vw_medical
     suggest_dimension: vw_medical.patient_age
@@ -783,6 +793,13 @@ view: vw_cohort_analysis_summary_1 {
     label: "G2 - DIGESTIVE DISEASE"
     suggest_explore: vw_medical
     suggest_dimension: vw_medical.icd_digestive_disease
+  }
+
+  filter: RISK_GROUP_G2 {
+    type: string
+    label: "G2 - RISK GROUP"
+    suggest_explore: vw_medical
+    suggest_dimension: vw_medical.RISK_GROUP
   }
 
   dimension: PATIENT_ID_G2 {
