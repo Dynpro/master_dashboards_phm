@@ -4,30 +4,30 @@ view: hedis_measure {
 
 ##ADULT'S ACCESS TO PREVENTIVE/AMBULATORY HEALTH SERVICES
   dimension: aap_compliant {
-    type: number
+    type: string
     sql: ${TABLE}."AAP_COMPLIANT" ;;
   }
 
   dimension: aap_eligible {
-    type: number
+    type: string
     sql: ${TABLE}."AAP_ELIGIBLE" ;;
   }
 
   measure: aap_compliant_patients {
-    type: sum
+    type: count_distinct
     filters: [aap_compliant: "1"]
-    sql: ${aap_compliant} ;;
+    sql: ${unique_id} ;;
   }
 
   measure: aap_eligible_patients {
-    type: sum
+    type: count_distinct
     filters: [aap_eligible: "1"]
-    sql: ${aap_eligible} ;;
+    sql: ${unique_id} ;;
   }
 
 ##ADULT BMI ASSESSMENT
   dimension: aba_compliant {
-    type: number
+    type: string
     sql: ${TABLE}."ABA_COMPLIANT" ;;
   }
 
@@ -37,7 +37,7 @@ view: hedis_measure {
   }
 
   dimension: aba_eligible {
-    type: number
+    type: string
     sql: ${TABLE}."ABA_ELIGIBLE" ;;
   }
 
@@ -69,6 +69,25 @@ view: hedis_measure {
     sql: ${TABLE}."AMM_ELIGIBLE" ;;
   }
 
+  measure: patients_amm_effective_antidepressant_acute_phase_treatment {
+    type: count_distinct
+    filters: [amm_effective_antidepressant_acute_phase_treatment: "1"]
+    sql: ${unique_id} ;;
+  }
+
+  measure: patients_amm_effective_antidepressant_continuation_phase_treatment {
+    type: count_distinct
+    filters: [amm_effective_antidepressant_continuation_phase_treatment: "1"]
+    sql: ${unique_id} ;;
+  }
+
+  measure: patients_amm_eligible {
+    type: count_distinct
+    filters: [amm_eligible: "1"]
+    sql: ${unique_id} ;;
+  }
+
+
 ##BREAST CANCER SCREENING
   dimension: bcs_compliant {
     type: string
@@ -78,6 +97,18 @@ view: hedis_measure {
   dimension: bcs_eligible {
     type: string
     sql: ${TABLE}."BCS_ELIGIBLE" ;;
+  }
+
+  measure: bcs_compliant_patients {
+    type: count_distinct
+    filters: [bcs_compliant: "1"]
+    sql: ${unique_id} ;;
+  }
+
+  measure: bcs_eligible_patients {
+    type: count_distinct
+    filters: [bcs_eligible: "1"]
+    sql: ${unique_id} ;;
   }
 
 ##CONTROLLING HIGH BLOOD PRESSURE
@@ -91,6 +122,18 @@ view: hedis_measure {
     sql: ${TABLE}."CBP_ELIGIBLE" ;;
   }
 
+  measure: cbp_compliant_patients {
+    type: count_distinct
+    filters: [cbp_compliant: "1"]
+    sql: ${unique_id} ;;
+  }
+
+  measure: cbp_eligible_patients {
+    type: count_distinct
+    filters: [cbp_eligible: "1"]
+    sql: ${unique_id} ;;
+  }
+
 ##CERVICAL CANCER SCREENING
   dimension: ccs_compliant {
     type: string
@@ -100,6 +143,18 @@ view: hedis_measure {
   dimension: ccs_eligible {
     type: string
     sql: ${TABLE}."CCS_ELIGIBLE" ;;
+  }
+
+  measure: ccs_compliant_patients {
+    type: count_distinct
+    filters: [ccs_compliant: "1"]
+    sql: ${unique_id} ;;
+  }
+
+  measure: ccs_eligible_patients {
+    type: count_distinct
+    filters: [ccs_eligible: "1"]
+    sql: ${unique_id} ;;
   }
 
 ##COMPREHENSIVE DIABETES CARE
