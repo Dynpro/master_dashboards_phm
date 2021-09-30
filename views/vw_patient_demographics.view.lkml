@@ -17,6 +17,11 @@ view: vw_patient_demographics {
     sql: ${TABLE}."DEPENDENT_M_NAME" ;;
   }
 
+  dimension: patient_name {
+    type: string
+    sql: CONCAT(IFNULL(${dependent_f_name}, ''), ' ', IFNULL(${dependent_m_name}, ''), ' ', IFNULL(${dependent_l_name}, '')) ;;
+  }
+
   dimension: dependent_ssn {
     type: string
     sql: ${TABLE}."DEPENDENT_SSN" ;;
@@ -30,11 +35,6 @@ view: vw_patient_demographics {
   dimension: member_id {
     type: string
     sql: ${TABLE}."MEMBER_ID" ;;
-  }
-
-  dimension: paid_year {
-    type: number
-    sql: ${TABLE}."PAID_YEAR" ;;
   }
 
   dimension_group: patient_dob {

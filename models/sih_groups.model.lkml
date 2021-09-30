@@ -65,8 +65,10 @@ explore: hedis_measure {
   join: vw_patient_demographics {
     view_label: "Patient Demographics"
     type: left_outer
-    relationship: one_to_one
+    relationship: many_to_one
     sql_on: ${hedis_measure.unique_id} = ${vw_patient_demographics.unique_id} ;;
   }
   label: "HEDIS Measures"
 }
+
+explore: vw_patient_demographics {}
