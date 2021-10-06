@@ -69,6 +69,14 @@ view: hedis_measure {
     sql: ${TABLE}."AMM_ELIGIBLE" ;;
   }
 
+  dimension: amm_compliant {
+    type: string
+    sql: CASE WHEN ${amm_effective_antidepressant_acute_phase_treatment} = '1' OR ${amm_effective_antidepressant_continuation_phase_treatment} = '1'
+          THEN '1'
+      ELSE '0'
+      END ;;
+  }
+
   measure: patients_amm_effective_antidepressant_acute_phase_treatment {
     type: count_distinct
     filters: [amm_effective_antidepressant_acute_phase_treatment: "1"]
@@ -78,6 +86,12 @@ view: hedis_measure {
   measure: patients_amm_effective_antidepressant_continuation_phase_treatment {
     type: count_distinct
     filters: [amm_effective_antidepressant_continuation_phase_treatment: "1"]
+    sql: ${unique_id} ;;
+  }
+
+  measure: patients_amm_compliant {
+    type: count_distinct
+    filters: [amm_compliant: "1"]
     sql: ${unique_id} ;;
   }
 
