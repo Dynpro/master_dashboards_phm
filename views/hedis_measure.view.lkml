@@ -163,9 +163,21 @@ view: hedis_measure {
     sql: ${TABLE}."CDC - BP control (<140/90 mm Hg)" ;;
   }
 
+  measure: cdc__bp_control_14090_mm_hg_patients {
+    type: count_distinct
+    filters: [cdc__bp_control_14090_mm_hg: "1"]
+    sql: ${unique_id} ;;
+  }
+
   dimension: cdc__hb_a1c_control_7_0 {
     type: string
     sql: ${TABLE}."CDC - HbA1c control (<7.0%)" ;;
+  }
+
+  measure: cdc__hb_a1c_control_7_0_patients {
+    type: count_distinct
+    filters: [cdc__hb_a1c_control_7_0: "1"]
+    sql: ${unique_id} ;;
   }
 
   dimension: cdc__hemoglobin_a1c_hb_a1c_testing {
@@ -173,9 +185,21 @@ view: hedis_measure {
     sql: ${TABLE}."CDC - Hemoglobin A1c (HbA1c) testing" ;;
   }
 
+  measure: cdc__hemoglobin_a1c_hb_a1c_testing_patients {
+    type: count_distinct
+    filters: [cdc__hemoglobin_a1c_hb_a1c_testing: "1"]
+    sql: ${unique_id} ;;
+  }
+
   dimension: cdc__hg_a1c_poor_control_9_0 {
     type: string
     sql: ${TABLE}."CDC - HgA1c poor control (>9.0%)" ;;
+  }
+
+  measure: cdc__hg_a1c_poor_control_9_0_patients {
+    type: count_distinct
+    filters: [cdc__hg_a1c_poor_control_9_0: "1"]
+    sql: ${unique_id} ;;
   }
 
   dimension: cdc__hgb_a1c_control_8_0 {
@@ -183,9 +207,21 @@ view: hedis_measure {
     sql: ${TABLE}."CDC - HgbA1c control (<8.0%)" ;;
   }
 
+  measure: cdc__hgb_a1c_control_8_0_patients {
+    type: count_distinct
+    filters: [cdc__hgb_a1c_control_8_0: "1"]
+    sql: ${unique_id} ;;
+  }
+
   dimension: cdc__medical_attention_for_nephropathy {
     type: string
     sql: ${TABLE}."CDC - Medical attention for nephropathy" ;;
+  }
+
+  measure: cdc__medical_attention_for_nephropathy_patients {
+    type: count_distinct
+    filters: [cdc__medical_attention_for_nephropathy: "1"]
+    sql: ${unique_id} ;;
   }
 
   dimension: cdc__testing_eye_exam_retinal_performed {
@@ -193,14 +229,32 @@ view: hedis_measure {
     sql: ${TABLE}."CDC - testing Eye exam (retinal) performed" ;;
   }
 
+  measure: cdc__testing_eye_exam_retinal_performed_patients {
+    type: count_distinct
+    filters: [cdc__testing_eye_exam_retinal_performed: "1"]
+    sql: ${unique_id} ;;
+  }
+
   dimension: cdc_compliant {
     type: string
     sql: ${TABLE}."CDC_COMPLIANT" ;;
   }
 
+  measure: cdc_compliant_patients {
+    type: count_distinct
+    filters: [cdc_compliant: "1"]
+    sql: ${unique_id} ;;
+  }
+
   dimension: cdc_eligible {
     type: string
     sql: ${TABLE}."CDC_ELIGIBLE" ;;
+  }
+
+  measure: cdc_eligible_patients {
+    type: count_distinct
+    filters: [cdc_eligible: "1"]
+    sql: ${unique_id} ;;
   }
 
 ##COLORECTAL CANCER SCREENING
@@ -214,6 +268,18 @@ view: hedis_measure {
     sql: ${TABLE}."COL_ELIGIBLE" ;;
   }
 
+  measure: col_compliant_patients {
+    type: count_distinct
+    filters: [col_compliant: "1"]
+    sql: ${unique_id} ;;
+  }
+
+  measure: col_eligible_patients {
+    type: count_distinct
+    filters: [col_eligible: "1"]
+    sql: ${unique_id} ;;
+  }
+
 ##OSTEOPOROSIS MANAGEMENT IN WOMEN WHO HAD A FRACTURE
   dimension: omw_compliant {
     type: string
@@ -223,6 +289,18 @@ view: hedis_measure {
   dimension: omw_eligible {
     type: string
     sql: ${TABLE}."OMW_ELIGIBLE" ;;
+  }
+
+  measure: omw_compliant_patients {
+    type: count_distinct
+    filters: [omw_compliant: "1"]
+    sql: ${unique_id} ;;
+  }
+
+  measure: omw_eligible_patients {
+    type: count_distinct
+    filters: [omw_eligible: "1"]
+    sql: ${unique_id} ;;
   }
 
 ##DIABETES MONITORING FOR PEOPLE WITH DIABETES AND SCHIZOPHRENIA
@@ -236,6 +314,18 @@ view: hedis_measure {
     sql: ${TABLE}."SMD_ELIGIBLE" ;;
   }
 
+  measure: smd_compliant_patients {
+    type: count_distinct
+    filters: [smd_compliant: "1"]
+    sql: ${unique_id} ;;
+  }
+
+  measure: smd_eligible_patients {
+    type: count_distinct
+    filters: [smd_eligible: "1"]
+    sql: ${unique_id} ;;
+  }
+
 ##USE OF SPIROMETRY TESTING IN THE ASSESSMENT AND DIAGNOSIS OF COPD
   dimension: spr_compliant {
     type: string
@@ -245,6 +335,18 @@ view: hedis_measure {
   dimension: spr_eligible {
     type: string
     sql: ${TABLE}."SPR_ELIGIBLE" ;;
+  }
+
+  measure: spr_compliant_patients {
+    type: count_distinct
+    filters: [spr_compliant: "1"]
+    sql: ${unique_id} ;;
+  }
+
+  measure: spr_eligible_patients {
+    type: count_distinct
+    filters: [spr_eligible: "1"]
+    sql: ${unique_id} ;;
   }
 
 
