@@ -4,16 +4,19 @@ view: vw_patient_demographics {
 
   dimension: dependent_f_name {
     type: string
+    hidden: yes
     sql: ${TABLE}."DEPENDENT_F_NAME" ;;
   }
 
   dimension: dependent_l_name {
     type: string
+    hidden: yes
     sql: ${TABLE}."DEPENDENT_L_NAME" ;;
   }
 
   dimension: dependent_m_name {
     type: string
+    hidden: yes
     sql: ${TABLE}."DEPENDENT_M_NAME" ;;
   }
 
@@ -24,6 +27,7 @@ view: vw_patient_demographics {
 
   dimension: dependent_ssn {
     type: string
+    hidden: yes
     sql: ${TABLE}."DEPENDENT_SSN" ;;
   }
 
@@ -59,11 +63,13 @@ view: vw_patient_demographics {
 
   dimension: unique_id {
     type: string
+    hidden: yes
     sql: ${TABLE}."UNIQUE_ID" ;;
   }
 
   measure: count {
     type: count
+    hidden: yes
     drill_fields: [dependent_f_name, dependent_l_name, dependent_m_name]
   }
 }
