@@ -53,6 +53,7 @@ view: vw_patient_demographics {
     ]
     convert_tz: no
     datatype: date
+    label: "Patient DOB"
     sql: ${TABLE}."PATIENT_DOB" ;;
   }
 

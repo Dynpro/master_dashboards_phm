@@ -129,14 +129,14 @@ view: vw_med_and_pharma_summary_1 {
   filter: DISEASE_CATEGORY {
     #default_value: "Diseases of the Musculoskeletal System and Connective Tissue"
     type: string
-    label: "DISEASE CATEGORY"
+    label: "DIAGNOSTIC CATEGORY"
     suggest_explore: vw_medical
     suggest_dimension: vw_medical.icd_disease_category
   }
 
   filter: DESCRIPTION {
     type: string
-    label: "DISEASE DESCRIPTION"
+    label: "DIAGNOSTIC DESCRIPTION"
     suggest_explore: vw_medical
     suggest_dimension: vw_medical.icd_description
   }
@@ -278,7 +278,7 @@ view: vw_med_and_pharma_summary_1 {
   dimension: DIAGNOSIS_DESCRIPTION_LIST {
     type: string
     can_filter: no
-    label: "DISEASE DESCRIPTION LIST"
+    label: "DIAGNOSTIC DESCRIPTION LIST"
     sql: ${TABLE}.Diagnosis_Description_List ;;
   }
 
