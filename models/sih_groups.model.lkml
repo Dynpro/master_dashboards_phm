@@ -71,4 +71,14 @@ explore: hedis_measure {
   label: "HEDIS Measures"
 }
 
+explore: ebr_measures {
+  label: "EBR Measures"
+  join: vw_patient_demographics {
+    view_label: "Patient Demographics"
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${ebr_measures.unique_id} = ${vw_patient_demographics.unique_id} ;;
+  }
+}
+
 explore: vw_patient_demographics {}
