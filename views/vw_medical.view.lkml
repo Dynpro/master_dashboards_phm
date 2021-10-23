@@ -926,4 +926,16 @@ view: vw_medical {
     END ;;
   }
 
+  dimension: year_and_patient_id {
+    type: string
+    hidden: yes
+    sql: CONCAT(${Paid_year}, ${unique_id}) ;;
+  }
+
+  measure: total_yearwise_patient_spend {
+    type: sum
+    sql_distinct_key: ${year_and_patient_id} ;;
+    sql: ${total_employer_paid_amt}  ;;
+  }
+
 }

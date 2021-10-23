@@ -62,6 +62,12 @@ view: vw_patient_demographics {
     sql: ${TABLE}."PATIENT_GENDER" ;;
   }
 
+  dimension: patient_current_age {
+    type: number
+    label: "Patient Age"
+    sql: DATEDIFF( year, ${patient_dob_raw}, CURRENT_DATE()) ;;
+  }
+
   dimension: unique_id {
     type: string
     hidden: yes
