@@ -124,92 +124,92 @@ view: ebr_measures {
 
   dimension: individual_taking_drug_with_cost_greater_than_400 {
     type: string
-    label: "Individual taking Drug cost greater than 400"
+    label: "INDIVIDUAL TAKING DRUG WITH COST GREATER THAN 400"
     sql: ${TABLE}."INDIVIDUAL_TAKING_DRUG_WITH_COST_GREATER_THAN_400" ;;
   }
 
   measure: individual_taking_drug_with_cost_greater_than_400_patients {
     type: count_distinct
     filters: [individual_taking_drug_with_cost_greater_than_400: "1"]
-    label: "Individual taking Drug cost greater than 400 - N"
+    label: "INDIVIDUAL TAKING DRUG WITH COST GREATER THAN 400 - N"
     sql: ${unique_id} ;;
   }
 
   dimension: individual_taking_black_label_drug {
     type: string
-    label: "Individual taking Black label drug"
+    label: "INDIVIDUAL TAKING BLACK LABEL DRUG"
     sql: ${TABLE}."INDIVIDUAL_TAKING_BLACK_LABEL_DRUG" ;;
   }
 
   measure: individual_taking_black_label_drug_patients {
     type: count_distinct
     filters: [individual_taking_black_label_drug: "1"]
-    label: "Individual taking Black label drug - N"
+    label: "INDIVIDUAL TAKING BLACK LABEL DRUG - N"
     sql: ${unique_id} ;;
   }
 
   dimension: individual_taking_specialty_drug {
     type: string
-    label: "Individual taking Specialty drugs"
+    label: "INDIVIDUAL TAKING SPECIALTY DRUGS DRUG"
     sql: ${TABLE}."INDIVIDUAL_TAKING_SPECIALTY_DRUGS_DRUG" ;;
   }
 
   measure: individual_taking_specialty_drug_patients {
     type: count_distinct
     filters: [individual_taking_specialty_drug: "1"]
-    label: "Individual taking Specialty drugs - N"
+    label: "INDIVIDUAL TAKING SPECIALTY DRUGS DRUG - N"
     sql: ${unique_id} ;;
   }
 
   dimension: individual_had_primary_care_physician_visit {
     type: string
-    label: "Individual had Primary care physician visit"
+    label: "INDIVIDUAL HAD PRIMARY CARE PHYSICIAN VISIT"
     sql: ${TABLE}."INDIVIDUAL_HAD_PRIMARY_CARE_PHYSICIAN_VISIT" ;;
   }
 
   measure: individual_had_primary_care_physician_visit_patients {
     type: count_distinct
     filters: [individual_had_primary_care_physician_visit: "1"]
-    label: "Individual had Primary care physician visit - N"
+    label: "INDIVIDUAL HAD PRIMARY CARE PHYSICIAN VISIT - N"
     sql: ${unique_id} ;;
   }
 
   dimension: individual_female_had_breast_cancer_screening {
     type: string
-    label: "Individual female had Breast cancer screening"
+    label: "INDIVIDUAL FEMALE HAD BREAST CANCER SCREENING"
     sql: ${TABLE}."INDIVIDUAL_FEMALE_HAD_BREAST_CANCER_SCREENING" ;;
   }
 
   measure: _patients {
     type: count_distinct
     filters: [individual_female_had_breast_cancer_screening: "1"]
-    label: "Individual female had Breast cancer screening - N"
+    label: "INDIVIDUAL FEMALE HAD BREAST CANCER SCREENING - N"
     sql: ${unique_id} ;;
   }
 
   dimension: individual_female_had_colon_cancer_screening {
     type: string
-    label: "Individual female had Colon cancer screening"
+    label: "INDIVIDUAL FEMALE HAD COLON CANCER SCREENING"
     sql: ${TABLE}."INDIVIDUAL_FEMALE_HAD_COLON_CANCER_SCREENING" ;;
   }
 
   measure: individual_female_had_colon_cancer_screening_patients {
     type: count_distinct
     filters: [individual_female_had_colon_cancer_screening: "1"]
-    label: "Individual female had Colon cancer screening - N"
+    label: "INDIVIDUAL FEMALE HAD COLON CANCER SCREENING - N"
     sql: ${unique_id} ;;
   }
 
   dimension: individual_female_had_cervical_cancer_screening {
     type: string
-    label: "Individual female had Cervical cancer screening"
+    label: "INDIVIDUAL FEMALE HAD CERVICAL CANCER SCREENING"
     sql: ${TABLE}."INDIVIDUAL_FEMALE_HAD_CERVICAL_CANCER_SCREENING" ;;
   }
 
   measure: individual_female_had_cervical_cancer_screening_patients {
     type: count_distinct
     filters: [individual_female_had_cervical_cancer_screening: "1"]
-    label: "Individual female had Cervical cancer screening - N"
+    label: "INDIVIDUAL FEMALE HAD CERVICAL CANCER SCREENING - N"
     sql: ${unique_id} ;;
   }
 
