@@ -643,7 +643,7 @@ view: vw_medical {
           ${primary_procedure_code} NOT IN ('0HTU0ZZ', '0HTV0ZZ', '0HTT0ZZ', '19303', '19304', '19305', '19306', '19307', '19200', '19220', '19180', '19240'))
           THEN 'ELIGIBLE - BREAST CANCER SCREENING'
         WHEN ((${patient_gender} = 'F') AND (${patient_age} >= 21 AND ${patient_age} <= 64)) AND
-          (${primary_diagnosis_code} NOT IN ('Z90712', 'Z90710', 'Q515', '6185', 'V6701', 'V7647', 'V8801', 'V8803') OR
+          (${reconciled_diagnosis_code_icd10} NOT IN ('Z90712', 'Z90710', 'Q515', '6185', 'V6701', 'V7647', 'V8801', 'V8803') OR
           ${primary_procedure_code} NOT IN ('684', '685', '686', '687', '688', '56308', '51925', '57540', '57545', '57550', '57555', '57556',
             '58150', '58152', '58200', '58210', '58240', '58260', '58262', '58263', '58267', '58270', '58275', '58280', '58285', '58290', '58291',
             '58292', '58293', '58294', '58548', '58550', '58551', '58552', '58553', '58554', '58570', '58571', '58572', '58573', '58951', '58953',
@@ -686,7 +686,7 @@ view: vw_medical {
     description: "Cancer Screening to identfy Patients who had screening for Breast/Cervical/Colon Cancer."
     sql: CASE WHEN ${patient_gender} = 'F' AND (${patient_age} >= 50 AND ${patient_age} <= 74) AND
           (${reconciled_diagnosis_code_icd10} IN ('V7611', 'V7612', 'Z1231', 'V7611', 'V7612', 'Z1231') OR
-          ${primary_procedure_code} IN ('77055', '77056', '77057', '77061', '77062', '77063', '77065', '77066', 'G0202', 'G0204', 'G0206'))
+          ${primary_procedure_code} IN ('77055', '77056', '77057', '77061', '77062', '77063', '77065', '77066', '77067', 'G0202', 'G0204', 'G0206'))
           THEN 'BREAST CANCER SCREENING'
         WHEN ${patient_gender} = 'F' AND (${patient_age} >= 21 AND ${patient_age} <= 64) AND
           (${reconciled_diagnosis_code_icd10} IN ('V7232', 'Z124') OR

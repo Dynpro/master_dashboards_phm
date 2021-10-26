@@ -41,10 +41,18 @@ view: ebr_measures {
     sql: ${unique_id} ;;
   }
 
+  dimension: individual_is_in_disease_group {
+    type: string
+    hidden: yes
+    sql: ${TABLE}."INDIVIDUAL_IS_IN_DISEASE_GROUP" ;;
+  }
+
   dimension: individual_is_in_disease_group_three {
     type: string
-    label: "INDIVIDUAL IS IN DISEASE GROUP3"
-    sql: ${TABLE}."INDIVIDUAL_IS_IN_DISEASE_GROUP3" ;;
+    label: "INDIVIDUAL IS IN DISEASE GROUP-3"
+    sql: CASE WHEN ${individual_is_in_disease_group} = 'GROUP-3' THEN '1'
+      ELSE '0'
+      END ;;
   }
 
   measure: individual_is_in_disease_group_three_patients {
@@ -56,8 +64,10 @@ view: ebr_measures {
 
   dimension: individual_is_in_disease_group_four {
     type: string
-    label: "INDIVIDUAL IS IN DISEASE GROUP4"
-    sql: ${TABLE}."INDIVIDUAL_IS_IN_DISEASE_GROUP4" ;;
+    label: "INDIVIDUAL IS IN DISEASE GROUP-4"
+    sql: CASE WHEN ${individual_is_in_disease_group} = 'GROUP-4' THEN '1'
+      ELSE '0'
+      END ;;
   }
 
   measure: individual_is_in_disease_group_four_patients {
@@ -69,14 +79,137 @@ view: ebr_measures {
 
   dimension: individual_is_in_disease_group_five {
     type: string
-    label: "INDIVIDUAL IS IN DISEASE GROUP5"
-    sql: ${TABLE}."INDIVIDUAL_IS_IN_DISEASE_GROUP5" ;;
+    label: "INDIVIDUAL IS IN DISEASE GROUP-5"
+    sql: CASE WHEN ${individual_is_in_disease_group} = 'GROUP-5' THEN '1'
+      ELSE '0'
+      END ;;
   }
 
   measure: individual_is_in_disease_group_five_patients {
     type: count_distinct
     filters: [individual_is_in_disease_group_five: "1"]
     label: "INDIVIDUAL IS IN DISEASE GROUP5 - N"
+    sql: ${unique_id} ;;
+  }
+
+  dimension: individual_is_in_disease_group_six {
+    type: string
+    label: "INDIVIDUAL IS IN DISEASE GROUP-6"
+    sql: CASE WHEN ${individual_is_in_disease_group} = 'GROUP-6' THEN '1'
+      ELSE '0'
+      END ;;
+  }
+
+  measure: individual_is_in_disease_group_six_patients {
+    type: count_distinct
+    filters: [individual_is_in_disease_group_six: "1"]
+    label: "INDIVIDUAL IS IN DISEASE GROUP6 - N"
+    sql: ${unique_id} ;;
+  }
+
+  dimension: individual_is_in_disease_group_seven {
+    type: string
+    label: "INDIVIDUAL IS IN DISEASE GROUP-7"
+    sql: CASE WHEN ${individual_is_in_disease_group} = 'GROUP-7' THEN '1'
+      ELSE '0'
+      END ;;
+  }
+
+  measure: individual_is_in_disease_group_seven_patients {
+    type: count_distinct
+    filters: [individual_is_in_disease_group_seven: "1"]
+    label: "INDIVIDUAL IS IN DISEASE GROUP7 - N"
+    sql: ${unique_id} ;;
+  }
+
+  dimension: individual_taking_drug_with_cost_greater_than_400 {
+    type: string
+    label: "Individual taking Drug cost greater than 400"
+    sql: ${TABLE}."INDIVIDUAL_TAKING_DRUG_WITH_COST_GREATER_THAN_400" ;;
+  }
+
+  measure: individual_taking_drug_with_cost_greater_than_400_patients {
+    type: count_distinct
+    filters: [individual_taking_drug_with_cost_greater_than_400: "1"]
+    label: "Individual taking Drug cost greater than 400 - N"
+    sql: ${unique_id} ;;
+  }
+
+  dimension: individual_taking_black_label_drug {
+    type: string
+    label: "Individual taking Black label drug"
+    sql: ${TABLE}."INDIVIDUAL_TAKING_BLACK_LABEL_DRUG" ;;
+  }
+
+  measure: individual_taking_black_label_drug_patients {
+    type: count_distinct
+    filters: [individual_taking_black_label_drug: "1"]
+    label: "Individual taking Black label drug - N"
+    sql: ${unique_id} ;;
+  }
+
+  dimension: individual_taking_specialty_drug {
+    type: string
+    label: "Individual taking Specialty drugs"
+    sql: ${TABLE}."INDIVIDUAL_TAKING_SPECIALTY_DRUGS_DRUG" ;;
+  }
+
+  measure: individual_taking_specialty_drug_patients {
+    type: count_distinct
+    filters: [individual_taking_specialty_drug: "1"]
+    label: "Individual taking Specialty drugs - N"
+    sql: ${unique_id} ;;
+  }
+
+  dimension: individual_had_primary_care_physician_visit {
+    type: string
+    label: "Individual had Primary care physician visit"
+    sql: ${TABLE}."INDIVIDUAL_HAD_PRIMARY_CARE_PHYSICIAN_VISIT" ;;
+  }
+
+  measure: individual_had_primary_care_physician_visit_patients {
+    type: count_distinct
+    filters: [individual_had_primary_care_physician_visit: "1"]
+    label: "Individual had Primary care physician visit - N"
+    sql: ${unique_id} ;;
+  }
+
+  dimension: individual_female_had_breast_cancer_screening {
+    type: string
+    label: "Individual female had Breast cancer screening"
+    sql: ${TABLE}."INDIVIDUAL_FEMALE_HAD_BREAST_CANCER_SCREENING" ;;
+  }
+
+  measure: _patients {
+    type: count_distinct
+    filters: [individual_female_had_breast_cancer_screening: "1"]
+    label: "Individual female had Breast cancer screening - N"
+    sql: ${unique_id} ;;
+  }
+
+  dimension: individual_female_had_colon_cancer_screening {
+    type: string
+    label: "Individual female had Colon cancer screening"
+    sql: ${TABLE}."INDIVIDUAL_FEMALE_HAD_COLON_CANCER_SCREENING" ;;
+  }
+
+  measure: individual_female_had_colon_cancer_screening_patients {
+    type: count_distinct
+    filters: [individual_female_had_colon_cancer_screening: "1"]
+    label: "Individual female had Colon cancer screening - N"
+    sql: ${unique_id} ;;
+  }
+
+  dimension: individual_female_had_cervical_cancer_screening {
+    type: string
+    label: "Individual female had Cervical cancer screening"
+    sql: ${TABLE}."INDIVIDUAL_FEMALE_HAD_CERVICAL_CANCER_SCREENING" ;;
+  }
+
+  measure: individual_female_had_cervical_cancer_screening_patients {
+    type: count_distinct
+    filters: [individual_female_had_cervical_cancer_screening: "1"]
+    label: "Individual female had Cervical cancer screening - N"
     sql: ${unique_id} ;;
   }
 
