@@ -213,6 +213,84 @@ view: ebr_measures {
     sql: ${unique_id} ;;
   }
 
+  dimension: individual_had_diagnosis_of_cardiovascular_and_taking_statin_drug {
+    type: string
+    label: "INDIVIDUAL HAD DIAGNOSIS OF CARDIOVASCULAR AND TAKING STATIN DRUG"
+    sql: ${TABLE}."INDIVIDUAL_HAD_DIAGNOSIS_OF_CARDIOVASCULAR_AND_TAKING_STATIN_DRUG" ;;
+  }
+
+  measure: individual_had_diagnosis_of_cardiovascular_and_taking_statin_drug_patients {
+    type: count_distinct
+    filters: [individual_had_diagnosis_of_cardiovascular_and_taking_statin_drug: "1"]
+    label: "INDIVIDUAL HAD DIAGNOSIS OF CARDIOVASCULAR AND TAKING STATIN DRUG - N"
+    sql: ${unique_id} ;;
+  }
+
+  dimension: individual_had_acute_myocardial_infarction_and_taking_beta_blocker {
+    type: string
+    label: "INDIVIDUAL HAD ACUTE MYOCARDIAL INFARCTION AND TAKING BETA BLOCKER"
+    sql: ${TABLE}."INDIVIDUAL_HAD_ACUTE_MYOCARDIAL_INFARCTION_AND_TAKING_BETA_BLOCKER" ;;
+  }
+
+  measure: individual_had_acute_myocardial_infarction_and_taking_beta_blocker_patients {
+    type: count_distinct
+    filters: [individual_had_acute_myocardial_infarction_and_taking_beta_blocker: "1"]
+    label: "INDIVIDUAL HAD ACUTE MYOCARDIAL INFARCTION AND TAKING BETA BLOCKER - N"
+    sql: ${unique_id} ;;
+  }
+
+  dimension: individual_has_diabetes_diagnosis_and_screened_for_retinopathy {
+    type: string
+    label: "INDIVIDUAL HAS DIABETES DIAGNOSIS AND SCREENED FOR RETINOPATHY"
+    sql: ${TABLE}."INDIVIDUAL_HAS_DIABETES_DIAGNOSIS_AND_SCREENED_FOR_RETINOPATHY" ;;
+  }
+
+  measure: individual_has_diabetes_diagnosis_and_screened_for_retinopathy_patients {
+    type: count_distinct
+    filters: [individual_has_diabetes_diagnosis_and_screened_for_retinopathy: "1"]
+    label: "INDIVIDUAL HAS DIABETES DIAGNOSIS AND SCREENED FOR RETINOPATHY - N"
+    sql: ${unique_id} ;;
+  }
+
+  dimension: individual_had_diagnosis_of_diabetes_and_taking_ace_inhibitor_or_arb_drugs {
+    type: string
+    label: "INDIVIDUAL HAD DIAGNOSIS OF DIABETES AND TAKING ACE_INHIBITOR/ ARB DRUGS"
+    sql: ${TABLE}."INDIVIDUAL_HAD_DIAGNOSIS_OF_DIABETES_AND_TAKING_ACE_INHIBITOR_OR_ARB_DRUGS" ;;
+  }
+
+  measure: individual_had_diagnosis_of_diabetes_and_taking_ace_inhibitor_or_arb_drugs_patients {
+    type: count_distinct
+    filters: [individual_had_diagnosis_of_diabetes_and_taking_ace_inhibitor_or_arb_drugs: "1"]
+    label: "INDIVIDUAL HAD DIAGNOSIS OF DIABETES AND TAKING ACE_INHIBITOR/ ARB DRUGS - N"
+    sql: ${unique_id} ;;
+  }
+
+  dimension: individual_had_diagnosis_of_diabetes_and_taking_statin_drugs {
+    type: string
+    label: "INDIVIDUAL HAD DIAGNOSIS OF DIABETES AND TAKING STATIN DRUGS"
+    sql: ${TABLE}."INDIVIDUAL_HAD_DIAGNOSIS_OF_DIABETES_AND_TAKING_STATIN_DRUGS" ;;
+  }
+
+  measure: individual_had_diagnosis_of_diabetes_and_taking_statin_drugs_patients {
+    type: count_distinct
+    filters: [individual_had_diagnosis_of_diabetes_and_taking_statin_drugs: "1"]
+    label: "INDIVIDUAL HAD DIAGNOSIS OF DIABETES AND TAKING STATIN DRUGS - N"
+    sql: ${unique_id} ;;
+  }
+
+  dimension: individual_had_diagnosis_of_diabetes_and_taking_antihypertensive_drugs {
+    type: string
+    label: "INDIVIDUAL HAD DIAGNOSIS OF DIABETES AND TAKING ANTIHYPERTENSIVE DRUGS"
+    sql: ${TABLE}."INDIVIDUAL_HAD_DIAGNOSIS_OF_DIABETES_AND_TAKING_ANTIHYPERTENSIVE_DRUGS" ;;
+  }
+
+  measure: individual_had_diagnosis_of_diabetes_and_taking_antihypertensive_drugs_patients {
+    type: count_distinct
+    filters: [individual_had_diagnosis_of_diabetes_and_taking_antihypertensive_drugs: "1"]
+    label: "INDIVIDUAL HAD DIAGNOSIS OF DIABETES AND TAKING ANTIHYPERTENSIVE DRUGS - N"
+    sql: ${unique_id} ;;
+  }
+
 
   dimension: unique_id {
     type: string
