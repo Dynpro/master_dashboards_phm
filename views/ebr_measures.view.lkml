@@ -290,7 +290,7 @@ view: ebr_measures {
 
   dimension: individual_had_diagnosis_of_diabetes_and_taking_ace_inhibitor_or_arb_drugs {
     type: string
-    label: "Diabetes & ACE_Inhibitor/ ARB Drug"
+    label: "Diabetes & ACE_INHIBITOR/ ARB Drug"
     description: "INDIVIDUAL HAD DIAGNOSIS OF DIABETES AND TAKING ACE_INHIBITOR/ ARB DRUGS"
     sql: ${TABLE}."INDIVIDUAL_HAD_DIAGNOSIS_OF_DIABETES_AND_TAKING_ACE_INHIBITOR_OR_ARB_DRUGS" ;;
   }
