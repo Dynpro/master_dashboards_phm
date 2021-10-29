@@ -245,7 +245,7 @@ view: ebr_measures {
 
   dimension: individual_had_diagnosis_of_cardiovascular_and_taking_statin_drug {
     type: string
-    label: "Cardiovascular & Statin Drug"
+    label: "Cardiovascular & STATIN Drug"
     description: "INDIVIDUAL HAD DIAGNOSIS OF CARDIOVASCULAR AND TAKING STATIN DRUG"
     sql: ${TABLE}."INDIVIDUAL_HAD_DIAGNOSIS_OF_CARDIOVASCULAR_AND_TAKING_STATIN_DRUG" ;;
   }
@@ -253,7 +253,7 @@ view: ebr_measures {
   measure: individual_had_diagnosis_of_cardiovascular_and_taking_statin_drug_patients {
     type: count_distinct
     filters: [individual_had_diagnosis_of_cardiovascular_and_taking_statin_drug: "1"]
-    label: "Cardiovascular & Statin Drug - N"
+    label: "Cardiovascular & STATIN Drug - N"
     description: "INDIVIDUAL HAD DIAGNOSIS OF CARDIOVASCULAR AND TAKING STATIN DRUG"
     sql: ${unique_id} ;;
   }
@@ -275,7 +275,7 @@ view: ebr_measures {
 
   dimension: individual_has_diabetes_diagnosis_and_screened_for_retinopathy {
     type: string
-    label: "Diabetes & Retinopathy Screening"
+    label: "Diabetes & RETINOPATHY Screening"
     description: "INDIVIDUAL HAS DIABETES DIAGNOSIS AND SCREENED FOR RETINOPATHY"
     sql: ${TABLE}."INDIVIDUAL_HAS_DIABETES_DIAGNOSIS_AND_SCREENED_FOR_RETINOPATHY" ;;
   }
@@ -283,7 +283,7 @@ view: ebr_measures {
   measure: individual_has_diabetes_diagnosis_and_screened_for_retinopathy_patients {
     type: count_distinct
     filters: [individual_has_diabetes_diagnosis_and_screened_for_retinopathy: "1"]
-    label: "Diabetes & Retinopathy Screening - N"
+    label: "Diabetes & RETINOPATHY Screening - N"
     description: "INDIVIDUAL HAS DIABETES DIAGNOSIS AND SCREENED FOR RETINOPATHY"
     sql: ${unique_id} ;;
   }
@@ -298,7 +298,7 @@ view: ebr_measures {
   measure: individual_had_diagnosis_of_diabetes_and_taking_ace_inhibitor_or_arb_drugs_patients {
     type: count_distinct
     filters: [individual_had_diagnosis_of_diabetes_and_taking_ace_inhibitor_or_arb_drugs: "1"]
-    label: "Diabetes & ACE_Inhibitor/ ARB Drug - N"
+    label: "Diabetes & ACE_INHIBITOR/ ARB Drug - N"
     description: "INDIVIDUAL HAD DIAGNOSIS OF DIABETES AND TAKING ACE_INHIBITOR/ ARB DRUGS"
     sql: ${unique_id} ;;
   }
