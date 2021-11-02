@@ -62,6 +62,16 @@ view: hedis_measure {
     sql: ${unique_id} ;;
   }
 
+  ##Need to discuss whether to include or not
+  dimension: aba_compliant_age_less_than_20 {
+    type: string
+    hidden: yes
+    label: "ABA Compliant (Age < 20) - N"
+    sql: CASE WHEN ${aba_compliant_categories} = 'ABA_Compliant_Age_less_than_20' THEN '1'
+      ELSE '0'
+      END ;;
+  }
+
   measure: patients_aba_compliant_age_less_than_20 {
     type: count_distinct
     filters: [aba_compliant_categories: "ABA_Compliant_Age_less_than_20"]
@@ -218,7 +228,7 @@ view: hedis_measure {
   dimension: cdc_bp_control_14090_mm_hg {
     type: string
     label: "CDC: BP control (<140/90 mm Hg)"
-    sql: ${TABLE}."CDC - BP control (<140/90 mm Hg)" ;;
+    sql: ${TABLE}."CDC_BP_Control_Less_Than_140mm_OR_90hg" ;;
   }
 
   measure: cdc_bp_control_14090_mm_hg_patients {
@@ -231,7 +241,7 @@ view: hedis_measure {
   dimension: cdc_hb_a1c_control_7_0 {
     type: string
     label: "CDC: HbA1c control (<7.0%)"
-    sql: ${TABLE}."CDC - HbA1c control (<7.0%)" ;;
+    sql: ${TABLE}."CDC_HBA1C_Control_Less_Than_7_Percentage" ;;
   }
 
   measure: cdc_hb_a1c_control_7_0_patients {
@@ -244,7 +254,7 @@ view: hedis_measure {
   dimension: cdc_hemoglobin_a1c_hb_a1c_testing {
     type: string
     label: "CDC: Hemoglobin A1c (HbA1c) testing"
-    sql: ${TABLE}."CDC - Hemoglobin A1c (HbA1c) testing" ;;
+    sql: ${TABLE}."CDC_Hemoglobin_HBA1C_Testing" ;;
   }
 
   measure: cdc_hemoglobin_a1c_hb_a1c_testing_patients {
@@ -257,7 +267,7 @@ view: hedis_measure {
   dimension: cdc_hg_a1c_poor_control_9_0 {
     type: string
     label: "CDC: HgA1c poor control (>9.0%)"
-    sql: ${TABLE}."CDC - HgA1c poor control (>9.0%)" ;;
+    sql: ${TABLE}."CDC_HGA1C_Poor_Control_Greater_Than_9_Percentage" ;;
   }
 
   measure: cdc_hg_a1c_poor_control_9_0_patients {
@@ -270,7 +280,7 @@ view: hedis_measure {
   dimension: cdc_hgb_a1c_control_8_0 {
     type: string
     label: "CDC: HgbA1c control (<8.0%)"
-    sql: ${TABLE}."CDC - HgbA1c control (<8.0%)" ;;
+    sql: ${TABLE}."CDC_HGBA1C_Control_Less_Than_8_Percentage" ;;
   }
 
   measure: cdc_hgb_a1c_control_8_0_patients {
@@ -283,7 +293,7 @@ view: hedis_measure {
   dimension: cdc_medical_attention_for_nephropathy {
     type: string
     label: "CDC: Medical attention for nephropathy"
-    sql: ${TABLE}."CDC - Medical attention for nephropathy" ;;
+    sql: ${TABLE}."CDC_Medical_Attention_For_Nephropathy" ;;
   }
 
   measure: cdc_medical_attention_for_nephropathy_patients {
@@ -296,7 +306,7 @@ view: hedis_measure {
   dimension: cdc_testing_eye_exam_retinal_performed {
     type: string
     label: "CDC: testing Eye exam (retinal) performed"
-    sql: ${TABLE}."CDC - testing Eye exam (retinal) performed" ;;
+    sql: ${TABLE}."CDC_Testing_EYE_Exam_Performed" ;;
   }
 
   measure: cdc_testing_eye_exam_retinal_performed_patients {
