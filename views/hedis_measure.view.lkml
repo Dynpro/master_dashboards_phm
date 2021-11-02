@@ -1,5 +1,5 @@
 view: hedis_measure {
-  sql_table_name: "SCH_SIH"."HEDIS_MEASURE"
+  sql_table_name: "SCH_SIH"."HEDIS_MEASURES"
     ;;
 
 ##ADULT'S ACCESS TO PREVENTIVE/AMBULATORY HEALTH SERVICES
