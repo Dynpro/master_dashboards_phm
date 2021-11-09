@@ -66,6 +66,7 @@ view: vw_risk_group_med_pharma_summary {
 
   dimension: File_year {
     type: string
+    label: "Year"
     sql: ${TABLE}."FILE_YEAR" ;;
   }
 
