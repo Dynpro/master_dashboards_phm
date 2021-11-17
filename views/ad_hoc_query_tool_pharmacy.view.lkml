@@ -11,7 +11,7 @@ view: ad_hoc_query_tool_pharmacy {
           "NON_PROPRIETARY_NAME" as Drug_List,
           "TEA_CATEGORY" as TEA_Cat_List
         from
-        "SCH_SIH"."VW_PHARMACY"
+        "SCH_KAIROS_ARKANSAS_MUNICIPAL_LEAGUE"."VW_PHARMACY"
         WHERE                                 /* Dynamic Filter condition*/
             {% condition DRUG %} "NON_PROPRIETARY_NAME" {% endcondition %} AND
             {% condition DRUG_CODE %} "DRUG_CODE" {% endcondition %} AND
@@ -27,7 +27,7 @@ view: ad_hoc_query_tool_pharmacy {
             {% condition DIGESTIVE_DISEASE_DRUGS %} "DIGESTIVE_DISEASE" {% endcondition %} AND
             {% condition BRAND_OR_GENERIC %} "BRAND_OR_GENERIC" {% endcondition %}
           AND
-            UNIQUE_ID IN (Select DISTINCT UNIQUE_ID from "SCH_SIH"."VW_MEDICAL"
+            UNIQUE_ID IN (Select DISTINCT UNIQUE_ID from "SCH_KAIROS_ARKANSAS_MUNICIPAL_LEAGUE"."VW_MEDICAL"
             WHERE
               {% condition DISEASE_CATEGORY %} "ICD_DISEASE_CATEGORY" {% endcondition %} AND
               {% condition PROCEDURE_MAJOR_CATEGORY %} "PROCEDURE_CATEGORY" {% endcondition %} AND
