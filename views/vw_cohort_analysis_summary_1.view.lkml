@@ -103,7 +103,10 @@ view: vw_cohort_analysis_summary_1 {
               {% condition 2012_CHRONIC_G1 %} M1."2012_CHRONIC" {% endcondition %} AND
               {% condition ICD_AVOIDABLE_ER_G1 %} M1."ICD_AVOIDABLE_ER" {% endcondition %} AND
               {% condition ICD_DIGESTIVE_DISEASE_G1 %} M1."ICD_DIGESTIVE_DISEASE" {% endcondition %} AND
-              {% condition RISK_GROUP_G1 %} M1."RISK_GROUP" {% endcondition %}
+              {% condition RISK_GROUP_G1 %} M1."RISK_GROUP" {% endcondition %} AND
+              {% condition MSK_MRS_CODE_CLASSIFICATION_G1 %} M1."MSK_MRS_CODE_CLASSIFICATION" {% endcondition %} AND
+              {% condition PARTICIPANT_FLAG_G1 %} M1."PARTICIPANT_FLAG" {% endcondition %}
+
 
             GROUP BY PATIENT_ID_M_G1, PAID_YEAR_G1, PATIENT_GENDER_G1, RELATIONSHIP_TO_EMPLOYEE_G1) as MED1
 
@@ -203,7 +206,9 @@ view: vw_cohort_analysis_summary_1 {
               {% condition 2012_CHRONIC_G2 %} M2."2012_CHRONIC" {% endcondition %} AND
               {% condition ICD_AVOIDABLE_ER_G2 %} M2."ICD_AVOIDABLE_ER" {% endcondition %} AND
               {% condition ICD_DIGESTIVE_DISEASE_G2 %} M2."ICD_DIGESTIVE_DISEASE" {% endcondition %} AND
-              {% condition RISK_GROUP_G2 %} M2."RISK_GROUP" {% endcondition %}
+              {% condition RISK_GROUP_G2 %} M2."RISK_GROUP" {% endcondition %} AND
+              {% condition MSK_MRS_CODE_CLASSIFICATION_G2 %} M2."MSK_MRS_CODE_CLASSIFICATION" {% endcondition %} AND
+              {% condition PARTICIPANT_FLAG_G2 %} M2."PARTICIPANT_FLAG" {% endcondition %}
 
             GROUP BY PATIENT_ID_M_G2, PAID_YEAR_G2, PATIENT_GENDER_G2, RELATIONSHIP_TO_EMPLOYEE_G2) AS MED2
 
@@ -972,5 +977,30 @@ view: vw_cohort_analysis_summary_1 {
           END ;;
     value_format: "$#,##0"
   }
+  filter: MSK_MRS_CODE_CLASSIFICATION_G1 {
+    type: string
+    label: "G1 - MSK MRS Codes Classification"
+    suggest_explore: vw_medical
+    suggest_dimension: vw_medical.MSK_MRS_CODE_CLASSIFICATION
+  }
 
+  filter: PARTICIPANT_FLAG_G1 {
+    type: string
+    label: "G1 - PARTICIPANT Flag"
+    suggest_explore: vw_medical
+    suggest_dimension: vw_medical.PARTICIPANT_Flag
+  }
+  filter: MSK_MRS_CODE_CLASSIFICATION_G2 {
+    type: string
+    label: "G2 - MSK MRS Codes Classification"
+    suggest_explore: vw_medical
+    suggest_dimension: vw_medical.MSK_MRS_CODE_CLASSIFICATION
+  }
+
+  filter: PARTICIPANT_FLAG_G2 {
+    type: string
+    label: "G2 - PARTICIPANT Flag"
+    suggest_explore: vw_medical
+    suggest_dimension: vw_medical.PARTICIPANT_Flag
+  }
 }
