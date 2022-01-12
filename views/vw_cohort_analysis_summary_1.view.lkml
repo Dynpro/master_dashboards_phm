@@ -454,6 +454,19 @@ view: vw_cohort_analysis_summary_1 {
     suggest_dimension: vw_medical.RISK_GROUP
   }
 
+  filter: MSK_MRS_CODE_CLASSIFICATION_G1 {
+    type: string
+    label: "G1 - MSK MRS Codes Classification"
+    suggest_explore: vw_medical
+    suggest_dimension: vw_medical.MSK_MRS_CODE_CLASSIFICATION
+  }
+
+  filter: PARTICIPANT_FLAG_G1 {
+    type: string
+    label: "G1 - PARTICIPANT Flag"
+    suggest_explore: vw_medical
+    suggest_dimension: vw_medical.PARTICIPANT_Flag
+  }
 
   dimension: PATIENT_ID_G1 {
     type: string
@@ -591,6 +604,8 @@ view: vw_cohort_analysis_summary_1 {
     suggest_explore: vw_pharmacy
     suggest_dimension: vw_pharmacy.brand_or_generic
   }
+
+
 
   dimension: TEA_CAT_LIST_G1 {
     type: string
@@ -807,6 +822,20 @@ view: vw_cohort_analysis_summary_1 {
     suggest_dimension: vw_medical.RISK_GROUP
   }
 
+  filter: MSK_MRS_CODE_CLASSIFICATION_G2 {
+    type: string
+    label: "G2 - MSK MRS Codes Classification"
+    suggest_explore: vw_medical
+    suggest_dimension: vw_medical.MSK_MRS_CODE_CLASSIFICATION
+  }
+
+  filter: PARTICIPANT_FLAG_G2 {
+    type: string
+    label: "G2 - PARTICIPANT Flag"
+    suggest_explore: vw_medical
+    suggest_dimension: vw_medical.PARTICIPANT_Flag
+  }
+
   dimension: PATIENT_ID_G2 {
     type: string
     hidden: yes
@@ -977,30 +1006,6 @@ view: vw_cohort_analysis_summary_1 {
           END ;;
     value_format: "$#,##0"
   }
-  filter: MSK_MRS_CODE_CLASSIFICATION_G1 {
-    type: string
-    label: "G1 - MSK MRS Codes Classification"
-    suggest_explore: vw_medical
-    suggest_dimension: vw_medical.MSK_MRS_CODE_CLASSIFICATION
-  }
 
-  filter: PARTICIPANT_FLAG_G1 {
-    type: string
-    label: "G1 - PARTICIPANT Flag"
-    suggest_explore: vw_medical
-    suggest_dimension: vw_medical.PARTICIPANT_Flag
-  }
-  filter: MSK_MRS_CODE_CLASSIFICATION_G2 {
-    type: string
-    label: "G2 - MSK MRS Codes Classification"
-    suggest_explore: vw_medical
-    suggest_dimension: vw_medical.MSK_MRS_CODE_CLASSIFICATION
-  }
 
-  filter: PARTICIPANT_FLAG_G2 {
-    type: string
-    label: "G2 - PARTICIPANT Flag"
-    suggest_explore: vw_medical
-    suggest_dimension: vw_medical.PARTICIPANT_Flag
-  }
 }

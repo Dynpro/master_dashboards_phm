@@ -25,8 +25,9 @@ view: ad_hoc_query_tool_pharmacy {
             {% condition SPECIALTY_DRUGS %} "SPECIALTY_DRUGS" {% endcondition %} AND
             {% condition MAINTENANCE_DRUGS %} "MAINTENANCE" {% endcondition %} AND
             {% condition DIGESTIVE_DISEASE_DRUGS %} "DIGESTIVE_DISEASE" {% endcondition %} AND
-            {% condition BRAND_OR_GENERIC %} "BRAND_OR_GENERIC" {% endcondition %}
-          AND
+            {% condition BRAND_OR_GENERIC %} "BRAND_OR_GENERIC" {% endcondition %} AND
+
+
             UNIQUE_ID IN (Select DISTINCT UNIQUE_ID from "SCH_KAIROS_ARKANSAS_MUNICIPAL_LEAGUE"."VW_MEDICAL"
             WHERE
               {% condition DISEASE_CATEGORY %} "ICD_DISEASE_CATEGORY" {% endcondition %} AND
@@ -282,6 +283,7 @@ view: ad_hoc_query_tool_pharmacy {
     suggest_explore: vw_pharmacy
     suggest_dimension: vw_pharmacy.brand_or_generic
   }
+
 
   filter: BLACK_LABEL_DRUG {
     type: string
