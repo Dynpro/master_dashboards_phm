@@ -131,7 +131,8 @@ view: vw_cohort_analysis_summary_1 {
               {% condition SPECIALTY_DRUGS_G1 %} P1."SPECIALTY_DRUGS" {% endcondition %} AND
               {% condition MAINTENANCE_G1 %} P1."MAINTENANCE" {% endcondition %} AND
               {% condition DIGESTIVE_DISEASE_G1 %} P1."DIGESTIVE_DISEASE" {% endcondition %} AND
-              {% condition BRAND_OR_GENERIC_G1 %} P1."BRAND_OR_GENERIC" {% endcondition %}
+              {% condition BRAND_OR_GENERIC_G1 %} P1."BRAND_OR_GENERIC" {% endcondition %} AND
+              {% condition PARTICIPANT_FLAG_P_G1 %} P1."PARTICIPANT_FLAG" {% endcondition %}
 
             GROUP BY PATIENT_ID_P_G1, SERVICE_DATE_G1) as PHARMA1
 
@@ -233,7 +234,8 @@ view: vw_cohort_analysis_summary_1 {
               {% condition SPECIALTY_DRUGS_G2 %} P2."SPECIALTY_DRUGS" {% endcondition %} AND
               {% condition MAINTENANCE_G2 %} P2."MAINTENANCE" {% endcondition %} AND
               {% condition DIGESTIVE_DISEASE_G2 %} P2."DIGESTIVE_DISEASE" {% endcondition %} AND
-              {% condition BRAND_OR_GENERIC_G2 %} P2."BRAND_OR_GENERIC" {% endcondition %}
+              {% condition BRAND_OR_GENERIC_G2 %} P2."BRAND_OR_GENERIC" {% endcondition %} AND
+              {% condition PARTICIPANT_FLAG_P_G2 %} P2."PARTICIPANT_FLAG" {% endcondition %}
 
             GROUP BY PATIENT_ID_P_G2, SERVICE_DATE_G2) AS PHARMA2
 
@@ -605,6 +607,12 @@ view: vw_cohort_analysis_summary_1 {
     suggest_dimension: vw_pharmacy.brand_or_generic
   }
 
+  filter: PARTICIPANT_FLAG_P_G1 {
+    type: string
+    label: "G1 - PARTICIPANT Flag"
+    suggest_explore: vw_pharmacy
+    suggest_dimension: vw_pharmacy.PARTICIPANT_Flag
+  }
 
 
   dimension: TEA_CAT_LIST_G1 {
@@ -976,6 +984,13 @@ view: vw_cohort_analysis_summary_1 {
     hidden: yes
     label: "G2 - Drug"
     sql: ${TABLE}.Drug_List ;;
+  }
+
+  filter: PARTICIPANT_FLAG_P_G2 {
+    type: string
+    label: "G2 - PARTICIPANT Flag"
+    suggest_explore: vw_pharmacy
+    suggest_dimension: vw_pharmacy.PARTICIPANT_Flag
   }
 
   dimension: TEA_Cat_List_G2 {

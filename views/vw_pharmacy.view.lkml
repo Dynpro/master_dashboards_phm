@@ -463,4 +463,8 @@ view: vw_pharmacy {
     html: {{ rendered_value | date: "%m / %d / %Y" }} ;;
   }
 
+  dimension: PARTICIPANT_Flag {
+    type: string
+    sql: ${TABLE}."PARTICIPANT_FLAG" ;;
+  }
 }

@@ -74,6 +74,11 @@ view: vw_patient_demographics {
     sql: ${TABLE}."UNIQUE_ID" ;;
   }
 
+  dimension: PARTICIPANT_Flag {
+    type: string
+    sql: ${TABLE}."PARTICIPANT_FLAG" ;;
+  }
+
   measure: count {
     type: count
     hidden: yes

@@ -18,8 +18,9 @@ view: vw_risk_group_med_pharma_summary {
                 {% condition PREVENTATIVE_OR_NOT %} "ICD_PREVENTATIVE" {% endcondition %} AND
                 {% condition CHRONIC_OR_NOT %} "2012_CHRONIC" {% endcondition %} AND
                 {% condition AVOIDABLE_ER_OR_NOT %} "ICD_AVOIDABLE_ER" {% endcondition %} AND
-                {% condition DIGESTIVE_DISEASE_OR_NOT %} "ICD_DIGESTIVE_DISEASE" {% endcondition %}
-            )
+                {% condition DIGESTIVE_DISEASE_OR_NOT %} "ICD_DIGESTIVE_DISEASE" {% endcondition %} AND
+                {% condition PARTICIPANT_FLAG_M %} ."PARTICIPANT_FLAG" {% endcondition %})
+
          AND
             UNIQUE_ID IN (select DISTINCT UNIQUE_ID from "SCH_KAIROS_ARKANSAS_MUNICIPAL_LEAGUE"."VW_PHARMACY"
             WHERE
@@ -32,8 +33,9 @@ view: vw_risk_group_med_pharma_summary {
                 {% condition SPECIALTY_DRUGS %} "SPECIALTY_DRUGS" {% endcondition %} AND
                 {% condition MAINTENANCE_DRUGS %} "MAINTENANCE" {% endcondition %} AND
                 {% condition DIGESTIVE_DISEASE_DRUGS %} "DIGESTIVE_DISEASE" {% endcondition %} AND
-                {% condition BRAND_OR_GENERIC %} "BRAND_OR_GENERIC" {% endcondition %}
-            )
+                {% condition BRAND_OR_GENERIC %} "BRAND_OR_GENERIC" {% endcondition %} AND
+                {% condition PARTICIPANT_FLAG_P %} ."PARTICIPANT_FLAG" {% endcondition %})
+
     ;;
   }
   drill_fields: [Unique_id, File_year, Risk_group, Total_paid_amt, Mean_paid_amt, Chronic, Chronic_count, Comorbid, Comorbid_count]
@@ -212,6 +214,13 @@ view: vw_risk_group_med_pharma_summary {
     suggest_dimension: vw_medical.icd_digestive_disease
   }
 
+  filter: PARTICIPANT_FLAG_M {
+    type: string
+    label: "PARTICIPANT Flag"
+    suggest_explore: vw_medical
+    suggest_dimension: vw_medical.PARTICIPANT_Flag
+  }
+
   #Pharmacy filters applied on vw_pharmacy tab.
   filter: ACE_INHIBITOR_DRUGS {
     type: string
@@ -274,6 +283,13 @@ view: vw_risk_group_med_pharma_summary {
     label: "BRAND OR GENERIC"
     suggest_explore: vw_pharmacy
     suggest_dimension: vw_pharmacy.brand_or_generic
+  }
+
+  filter: PARTICIPANT_FLAG_P {
+    type: string
+    label: "PARTICIPANT Flag"
+    suggest_explore: vw_pharmacy
+    suggest_dimension: vw_pharmacy.PARTICIPANT_Flag
   }
 
   filter: BLACK_LABEL_DRUG {

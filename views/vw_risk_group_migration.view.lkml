@@ -18,7 +18,8 @@ view: vw_risk_group_migration {
           {% condition PREVENTATIVE_OR_NOT %} "ICD_PREVENTATIVE" {% endcondition %} AND
           {% condition CHRONIC_OR_NOT %} "2012_CHRONIC" {% endcondition %} AND
           {% condition AVOIDABLE_ER_OR_NOT %} "ICD_AVOIDABLE_ER" {% endcondition %} AND
-          {% condition DIGESTIVE_DISEASE_OR_NOT %} "ICD_DIGESTIVE_DISEASE" {% endcondition %}
+          {% condition DIGESTIVE_DISEASE_OR_NOT %} "ICD_DIGESTIVE_DISEASE" {% endcondition %} AND
+          {% condition PARTICIPANT_FLAG %} ."PARTICIPANT_FLAG" {% endcondition %}
           ) ;;
   }
 
@@ -195,5 +196,12 @@ view: vw_risk_group_migration {
     label: "DIGESTIVE DISEASE ?"
     suggest_explore: vw_medical
     suggest_dimension: vw_medical.icd_digestive_disease
+  }
+
+  filter: PARTICIPANT_FLAG {
+    type: string
+    label: "PARTICIPANT Flag"
+    suggest_explore: vw_medical
+    suggest_dimension: vw_medical.PARTICIPANT_Flag
   }
 }

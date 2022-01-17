@@ -85,5 +85,8 @@ view: vw_preventive_screening {
     sql: ${unique_id} ;;
   }
 
-
+  dimension: PARTICIPANT_Flag {
+    type: string
+    sql: ${TABLE}."PARTICIPANT_FLAG" ;;
+  }
 }
