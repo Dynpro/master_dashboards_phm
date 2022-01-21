@@ -20,7 +20,8 @@ view: ad_hoc_query_tool_medical {
           "PROCEDURE_SUBCATEGORY" as PROCEDURE_SUB_CATEGORY,
           "PRIMARY_PROCEDURE_CODE" as PRIMARY_PROCEDURE_CODE,
           "PLACE_OF_SERVICE_DESCRIPTION" as PLACE_OF_SERVICE_DESCRIPTION,
-          "SERVICE_PROVIDER_SPECIALITY_CODE_DESC" as SERVICE_PROVIDER_SPECIALITY_CODE_DESC
+          "SERVICE_PROVIDER_SPECIALITY_CODE_DESC" as SERVICE_PROVIDER_SPECIALITY_CODE_DESC,
+          "PARTICIPANT_FLAG" as PARTICIPANT_FLAG
          from
         "SCH_KAIROS_ARKANSAS_MUNICIPAL_LEAGUE"."VW_MEDICAL"
         WHERE                                 /* Dynamic Filter condition*/
@@ -44,7 +45,7 @@ view: ad_hoc_query_tool_medical {
             {% condition CHRONIC_OR_NOT %} "2012_CHRONIC" {% endcondition %} AND
             {% condition AVOIDABLE_ER_OR_NOT %} "ICD_AVOIDABLE_ER" {% endcondition %} AND
             {% condition DIGESTIVE_DISEASE_OR_NOT %} "ICD_DIGESTIVE_DISEASE" {% endcondition %} AND
-            {% condition PARTICIPANT_FLAG %} ."PARTICIPANT_FLAG" {% endcondition %} AND
+
 
             UNIQUE_ID IN (Select DISTINCT UNIQUE_ID from "SCH_KAIROS_ARKANSAS_MUNICIPAL_LEAGUE"."VW_PHARMACY"
               WHERE
@@ -211,12 +212,7 @@ view: ad_hoc_query_tool_medical {
     suggest_dimension: vw_medical.icd_digestive_disease
   }
 
-  filter: PARTICIPANT_FLAG {
-    type: string
-    label: "PARTICIPANT Flag"
-    suggest_explore: vw_medical
-    suggest_dimension: vw_medical.PARTICIPANT_Flag
-  }
+
 
   #Medical Dimension & Measure.
   dimension: PATIENT_ID {
@@ -472,4 +468,9 @@ view: ad_hoc_query_tool_medical {
     suggest_dimension: vw_pharmacy.ace_inhibitor
   }
 
+  dimension: PARTICIPANT_FLAG{
+    type: string
+    label: "PARTICIPANT Flag"
+    sql: ${TABLE}."PARTICIPANT_FLAG" ;;
+  }
 }
