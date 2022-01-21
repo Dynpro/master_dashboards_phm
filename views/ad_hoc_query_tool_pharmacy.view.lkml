@@ -9,7 +9,8 @@ view: ad_hoc_query_tool_pharmacy {
           "TOTAL_BILLED_AMT" as Total_Billed_Amt_P,
           "TOTAL_EMPLOYER_PAID_AMT" as Total_Paid_Amt_P,
           "NON_PROPRIETARY_NAME" as Drug_List,
-          "TEA_CATEGORY" as TEA_Cat_List
+          "TEA_CATEGORY" as TEA_Cat_List,
+          "PARTICIPANT_FLAG" as PARTICIPANT_FLAG
         from
         "SCH_KAIROS_ARKANSAS_MUNICIPAL_LEAGUE"."VW_PHARMACY"
         WHERE                                 /* Dynamic Filter condition*/
@@ -26,7 +27,7 @@ view: ad_hoc_query_tool_pharmacy {
             {% condition MAINTENANCE_DRUGS %} "MAINTENANCE" {% endcondition %} AND
             {% condition DIGESTIVE_DISEASE_DRUGS %} "DIGESTIVE_DISEASE" {% endcondition %} AND
             {% condition BRAND_OR_GENERIC %} "BRAND_OR_GENERIC" {% endcondition %} AND
-            {% condition PARTICIPANT_FLAG %} ."PARTICIPANT_FLAG" {% endcondition %} AND
+
 
             UNIQUE_ID IN (Select DISTINCT UNIQUE_ID from "SCH_KAIROS_ARKANSAS_MUNICIPAL_LEAGUE"."VW_MEDICAL"
             WHERE
@@ -284,12 +285,7 @@ view: ad_hoc_query_tool_pharmacy {
     suggest_dimension: vw_pharmacy.brand_or_generic
   }
 
-  filter: PARTICIPANT_FLAG {
-    type: string
-    label: "PARTICIPANT Flag"
-    suggest_explore: vw_pharmacy
-    suggest_dimension: vw_pharmacy.PARTICIPANT_Flag
-  }
+
 
   filter: BLACK_LABEL_DRUG {
     type: string
@@ -378,5 +374,12 @@ view: ad_hoc_query_tool_pharmacy {
           END;;
     value_format: "$#,##0"
   }
+
+  dimension: PARTICIPANT_FLAG{
+    type: string
+    label: "PARTICIPANT Flag"
+    sql: ${TABLE}."PARTICIPANT_FLAG" ;;
+  }
+
 
 }
