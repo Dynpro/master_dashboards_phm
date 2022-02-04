@@ -10,7 +10,8 @@ view: ad_hoc_query_tool_pharmacy {
           "TOTAL_EMPLOYER_PAID_AMT" as Total_Paid_Amt_P,
           "NON_PROPRIETARY_NAME" as Drug_List,
           "TEA_CATEGORY" as TEA_Cat_List,
-          "PARTICIPANT_FLAG" as PARTICIPANT_FLAG
+          "PARTICIPANT_FLAG" as PARTICIPANT_FLAG,
+          "MEMBER_AGE" as MEMBER_AGE
         from
         "SCH_KAIROS_ARKANSAS_MUNICIPAL_LEAGUE"."VW_PHARMACY"
         WHERE                                 /* Dynamic Filter condition*/
@@ -381,5 +382,19 @@ view: ad_hoc_query_tool_pharmacy {
     sql: ${TABLE}."PARTICIPANT_FLAG" ;;
   }
 
+  dimension: member_age {
+    type: number
+    label: "MEMBER_AGE"
+    sql: ${TABLE}."MEMBER_AGE" ;;
+  }
+
+  dimension: Age_Group {
+    type: tier
+    label: "AGE GROUP-2"
+    tiers: [20, 30, 40, 50, 60]
+    description: "AGE Group>> 0-19, 20-29, 30-39, 40-49, 50-59 & >=60 yrs"
+    style: integer
+    sql:  ${TABLE}."MEMBER_AGE";;
+  }
 
 }
