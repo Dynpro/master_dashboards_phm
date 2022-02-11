@@ -112,7 +112,7 @@ view: vw_med_and_pharma_summary_1 {
             {% condition MAINTENANCE_DRUGS %} "MAINTENANCE" {% endcondition %} AND
             {% condition DIGESTIVE_DISEASE_DRUGS %} "DIGESTIVE_DISEASE" {% endcondition %} AND
             {% condition BRAND_OR_GENERIC %} "BRAND_OR_GENERIC" {% endcondition %} AND
-            {% condition PARTICIPANT_FLAG_P %} ."PARTICIPANT_FLAG" {% endcondition %}
+            {% condition PARTICIPANT_FLAG_P %} "PARTICIPANT_FLAG" {% endcondition %}
 
             GROUP BY PATIENT_ID_P, substring("DATE_FILLED", 1, 4), ACE_INHIBITOR_List, ARB_DRUGS_List, DRI_DRUGS_List, STATIN_DRUGS_List) as PHARMA
 
