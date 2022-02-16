@@ -2,33 +2,27 @@ view: ad_hoc_query_tool_medical {
   label: "Ad hoc Tool MEDICAL"
   derived_table: {
     sql: select
-          A.UNIQUE_ID as PATIENT_ID_M,
-          A.PATIENT_GENDER as PATIENT_GENDER,
-          A.RELATIONSHIP_TO_EMPLOYEE as RELATIONSHIP_TO_EMPLOYEE,
-          A.PAID_DATE as PAID_DATE,
-          A.PATIENT_AGE as PATIENT_AGE,
-          A.AGE_GROUP_1 as AGE_GROUP_1,
-          A.TOTAL_BILLED_AMT as Total_Billed_Amt_M,
-          A.TOTAL_EMPLOYER_PAID_AMT as Total_Paid_Amt_M,
-          A.ICD_DESCRIPTION as ICD_DISEASE_DESCRIPTION,
-          A.ICD_DISEASE_CATEGORY as ICD_DISEASE_CATEGORY,
-          A.DISEASE_SUB_CATEGORY as DISEASE_SUB_CATEGORY,
-          A.RECONCILED_DIAGNOSIS_CODE_ICD10 as RECONCILED_DIAGNOSIS_CODE_ICD10,
-          A.ICD_CHRONIC_CAT as ICD_CHRONIC_CAT,
-          A.PROCEDURE_DESCRIPTION as PROCEDURE_DESCRIPTION,
-          A.PROCEDURE_CATEGORY as PROCEDURE_CATEGORY,
-          A.PROCEDURE_SUBCATEGORY as PROCEDURE_SUB_CATEGORY,
-          A.PRIMARY_PROCEDURE_CODE as PRIMARY_PROCEDURE_CODE,
-          A.PLACE_OF_SERVICE_DESCRIPTION as PLACE_OF_SERVICE_DESCRIPTION,
-          A.SERVICE_PROVIDER_SPECIALITY_CODE_DESC as SERVICE_PROVIDER_SPECIALITY_CODE_DESC,
-          A.PARTICIPANT_FLAG as PARTICIPANT_FLAG,
-          B.DEPENDENT_F_NAME as DEPENDENT_F_NAME,
-          B.UNIQUE_ID as PATIENT_ID
+          "UNIQUE_ID" as PATIENT_ID_M,
+          "PATIENT_GENDER" as PATIENT_GENDER,
+          "RELATIONSHIP_TO_EMPLOYEE" as RELATIONSHIP_TO_EMPLOYEE,
+          "PAID_DATE" as PAID_DATE,
+          "PATIENT_AGE" as PATIENT_AGE,
+          "AGE_GROUP_1" as AGE_GROUP_1,
+          "TOTAL_BILLED_AMT" as Total_Billed_Amt_M,
+          "TOTAL_EMPLOYER_PAID_AMT" as Total_Paid_Amt_M,
+          "ICD_DESCRIPTION" as ICD_DISEASE_DESCRIPTION,
+          "ICD_DISEASE_CATEGORY" as ICD_DISEASE_CATEGORY,
+          "DISEASE_SUB_CATEGORY" as DISEASE_SUB_CATEGORY,
+          "RECONCILED_DIAGNOSIS_CODE_ICD10" as RECONCILED_DIAGNOSIS_CODE_ICD10,
+          "ICD_CHRONIC_CAT" as ICD_CHRONIC_CAT,
+          "PROCEDURE_DESCRIPTION" as PROCEDURE_DESCRIPTION,
+          "PROCEDURE_CATEGORY" as PROCEDURE_CATEGORY,
+          "PROCEDURE_SUBCATEGORY" as PROCEDURE_SUB_CATEGORY,
+          "PRIMARY_PROCEDURE_CODE" as PRIMARY_PROCEDURE_CODE,
+          "PLACE_OF_SERVICE_DESCRIPTION" as PLACE_OF_SERVICE_DESCRIPTION,
+          "SERVICE_PROVIDER_SPECIALITY_CODE_DESC" as SERVICE_PROVIDER_SPECIALITY_CODE_DESC
          from
-        "SCH_KAIROS_ARKANSAS_MUNICIPAL_LEAGUE"."VW_MEDICAL" as A
-        left join
-        "SCH_KAIROS_ARKANSAS_MUNICIPAL_LEAGUE"."VW_PATIENT_DEMOGRAPHICS" as B
-        ON A.UNIQUE_ID = B.UNIQUE_ID
+        "SCH_KAIROS_ARKANSAS_MUNICIPAL_LEAGUE"."VW_MEDICAL"
         WHERE                                 /* Dynamic Filter condition*/
             {% condition DISEASE_CATEGORY %} "ICD_DISEASE_CATEGORY" {% endcondition %} AND
             {% condition PROCEDURE_MAJOR_CATEGORY %} "PROCEDURE_CATEGORY" {% endcondition %} AND
@@ -51,8 +45,7 @@ view: ad_hoc_query_tool_medical {
             {% condition AVOIDABLE_ER_OR_NOT %} "ICD_AVOIDABLE_ER" {% endcondition %} AND
             {% condition DIGESTIVE_DISEASE_OR_NOT %} "ICD_DIGESTIVE_DISEASE" {% endcondition %} AND
 
-
-            A.UNIQUE_ID IN (Select DISTINCT C.UNIQUE_ID from "SCH_KAIROS_ARKANSAS_MUNICIPAL_LEAGUE"."VW_PHARMACY" as C
+            UNIQUE_ID IN (Select DISTINCT UNIQUE_ID from "SCH_KAIROS_ARKANSAS_MUNICIPAL_LEAGUE"."VW_PHARMACY"
               WHERE
                 {% condition DRUG %} "NON_PROPRIETARY_NAME" {% endcondition %} AND
                 {% condition DRUG_CODE %} "DRUG_CODE" {% endcondition %} AND
@@ -217,8 +210,6 @@ view: ad_hoc_query_tool_medical {
     suggest_dimension: vw_medical.icd_digestive_disease
   }
 
-
-
   #Medical Dimension & Measure.
   dimension: PATIENT_ID {
     type: string
@@ -342,6 +333,15 @@ view: ad_hoc_query_tool_medical {
     label: "AGE GROUP"
     drill_fields: [PATIENT_GENDER, CHRONIC_CATEGORY, DISEASE_CATEGORY, DISEASE_DESCRIPTION, RECONCILED_DIAGNOSIS_CODE_ICD10, PRIMARY_PROCEDURE_CODE, PROCEDURE_DESCRIPTION, PLACE_OF_SERVICE_DESCRIPTION]
     sql: ${TABLE}.AGE_GROUP_1 ;;
+  }
+
+  dimension: Age_Group {
+    type: tier
+    label: "AGE GROUP-2"
+    tiers: [20, 30, 40, 50, 60]
+    description: "AGE Group>> 0-19, 20-29, 30-39, 40-49, 50-59 & >=60 yrs"
+    style: integer
+    sql:  ${PATIENT_AGE};;
   }
 
   measure: Total_Billed_Amt_M {
@@ -473,15 +473,4 @@ view: ad_hoc_query_tool_medical {
     suggest_dimension: vw_pharmacy.ace_inhibitor
   }
 
-  dimension: PARTICIPANT_FLAG{
-    type: string
-    label: "PARTICIPANT Flag"
-    sql: ${TABLE}."PARTICIPANT_FLAG" ;;
-  }
-
-  dimension: DEPENDENT_F_NAME{
-    type: string
-    label: "DEPENDENT_F_NAME"
-    sql: ${TABLE}."DEPENDENT_F_NAME" ;;
-  }
 }

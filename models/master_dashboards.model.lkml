@@ -12,24 +12,12 @@ persist_with: master_dashboards_default_datagroup
 
 
 explore: vw_medical {
-  join: vw_patient_demographics {
-    view_label: "Patient Demographics"
-    type: left_outer
-    relationship: many_to_one
-    sql_on: ${vw_medical.unique_id} = ${vw_patient_demographics.unique_id} ;;
-  }
-  label: "Medical records"
+   label: "Medical records"
   sql_always_where: ${Paid_year} IN ('2018', '2019', '2020') ;;
 }
 
 explore: vw_pharmacy {
-  join: vw_patient_demographics {
-    view_label: "Patient Demographics"
-    type: left_outer
-    relationship: many_to_one
-    sql_on: ${vw_pharmacy.unique_id} = ${vw_patient_demographics.unique_id} ;;
-  }
-  label: "Pharmacy records"
+   label: "Pharmacy records"
   sql_always_where: ${date_filled_year} IN ('2019', '2020') ;;
 }
 
@@ -54,12 +42,6 @@ explore: vw_cohort_analysis_summary_1 {
 }
 
 explore: vw_risk_group_migration {
-  join: vw_patient_demographics {
-    view_label: "Patient Demographics"
-    type: left_outer
-    relationship: many_to_one
-    sql_on: ${vw_risk_group_migration.Unique_id} = ${vw_patient_demographics.unique_id} ;;
-  }
   label: "Risk Group Migration"
   sql_always_where: ${File_year} IN ('2018', '2019', '2020') ;;
 }

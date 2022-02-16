@@ -278,9 +278,6 @@ view: vw_risk_group_med_pharma_summary {
     suggest_dimension: vw_pharmacy.brand_or_generic
   }
 
-
-
-
   filter: BLACK_LABEL_DRUG {
     type: string
     label: "BLACK LABEL DRUG"
@@ -293,4 +290,5 @@ view: vw_risk_group_med_pharma_summary {
     label: "PARTICIPANT Flag"
     sql: ${TABLE}."PARTICIPANT_FLAG" ;;
   }
+
 }
