@@ -203,4 +203,6 @@ view: vw_risk_group_migration {
     sql: ${TABLE}."PARTICIPANT_FLAG" ;;
   }
 
+
+
 }

@@ -89,4 +89,5 @@ view: vw_preventive_screening {
     type: string
     sql: ${TABLE}."PARTICIPANT_FLAG" ;;
   }
+
 }
