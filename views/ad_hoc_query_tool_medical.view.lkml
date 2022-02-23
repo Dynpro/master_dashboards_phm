@@ -473,4 +473,8 @@ view: ad_hoc_query_tool_medical {
     suggest_dimension: vw_pharmacy.ace_inhibitor
   }
 
+  dimension: PARTICIPANT_Flag {
+    type: string
+    sql: ${TABLE}."PARTICIPANT_FLAG" ;;
+  }
 }
