@@ -357,4 +357,9 @@ view: ebr_measures {
     hidden: yes
     drill_fields: []
   }
+
+  dimension: PARTICIPANT_Flag {
+    type: string
+    sql: ${TABLE}."PARTICIPANT_FLAG" ;;
+  }
 }

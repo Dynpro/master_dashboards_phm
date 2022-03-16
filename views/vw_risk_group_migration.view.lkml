@@ -196,4 +196,13 @@ view: vw_risk_group_migration {
     suggest_explore: vw_medical
     suggest_dimension: vw_medical.icd_digestive_disease
   }
+
+  dimension: PARTICIPANT_FLAG {
+    type: string
+    label: "PARTICIPANT Flag"
+    sql: ${TABLE}."PARTICIPANT_FLAG" ;;
+  }
+
+
+
 }

@@ -67,11 +67,29 @@ view: vw_patient_demographics {
     label: "Patient Age"
     sql: DATEDIFF( year, ${patient_dob_raw}, CURRENT_DATE()) ;;
   }
+  dimension: AgeGroup {
+    type: tier
+    label: "AGE GROUP"
+    tiers: [20, 30, 40, 50, 60]
+    description: "AGE Group>> 0-19, 20-29, 30-39, 40-49, 50-59 & >=60 yrs"
+    style: integer
+    sql:  ${patient_current_age};;
+  }
+  dimension: relationship_to_employee {
+    type: string
+    label: "RELATIONSHIP TO EMPLOYEE"
+    sql: ${TABLE}."RELATIONSHIP_TO_EMPLOYEE" ;;
+  }
 
   dimension: unique_id {
     type: string
     hidden: yes
     sql: ${TABLE}."UNIQUE_ID" ;;
+  }
+
+  dimension: PARTICIPANT_Flag {
+    type: string
+    sql: ${TABLE}."PARTICIPANT_FLAG" ;;
   }
 
   measure: count {

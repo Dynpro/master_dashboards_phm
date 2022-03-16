@@ -170,6 +170,15 @@ view: vw_pharmacy {
     sql: ${TABLE}."MEMBER_AGE" ;;
   }
 
+  dimension: Age_Group {
+    type: tier
+    label: "AGE GROUP-2"
+    tiers: [20, 30, 40, 50, 60]
+    description: "AGE Group>> 0-19, 20-29, 30-39, 40-49, 50-59 & >=60 yrs"
+    style: integer
+    sql:  ${TABLE}."MEMBER_AGE";;
+  }
+
   dimension: member_id {
     type: string
     hidden:  yes
@@ -463,4 +472,8 @@ view: vw_pharmacy {
     html: {{ rendered_value | date: "%m / %d / %Y" }} ;;
   }
 
+  dimension: PARTICIPANT_Flag {
+    type: string
+    sql: ${TABLE}."PARTICIPANT_FLAG" ;;
+  }
 }

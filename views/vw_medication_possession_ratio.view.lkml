@@ -11,6 +11,7 @@ view: vw_medication_possession_ratio {
             {% condition BLACK_LABEL_Drugs %} "BLACK_LABEL_DRUG" {% endcondition %} AND
             {% condition SPECIALTY_Drugs %} "SPECIALTY_DRUGS" {% endcondition %} AND
             {% condition MAINTENANCE_Drugs %} "MAINTENANCE" {% endcondition %})
+
           AND
             "UNIQUE_ID" IN (Select DISTINCT "UNIQUE_ID" from "SCH_KAIROS_ARKANSAS_MUNICIPAL_LEAGUE"."VW_MEDICAL"
               WHERE
@@ -78,6 +79,7 @@ view: vw_medication_possession_ratio {
     suggest_explore: vw_pharmacy
     suggest_dimension: vw_pharmacy.maintenance
   }
+
 
   filter: DISEASE_CATEGORY {
     type: string
@@ -191,4 +193,23 @@ view: vw_medication_possession_ratio {
     sql: ${unique_id} ;;
   }
 
+  dimension: PARTICIPANT_FLAG {
+    type: string
+    label: "PARTICIPANT Flag"
+    sql: ${TABLE}."PARTICIPANT_FLAG" ;;
+  }
+  dimension: patient_age {
+    type: number
+    label: "PATIENT AGE"
+    sql: ${TABLE}."PATIENT_AGE" ;;
+  }
+
+  dimension: Age_Group {
+    type: tier
+    label: "AGE GROUP-2"
+    tiers: [20, 30, 40, 50, 60]
+    description: "AGE Group>> 0-19, 20-29, 30-39, 40-49, 50-59 & >=60 yrs"
+    style: integer
+    sql:  ${patient_age};;
+  }
 }

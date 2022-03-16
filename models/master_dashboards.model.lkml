@@ -36,6 +36,12 @@ explore: vw_cohort_analysis_summary_1 {
 }
 
 explore: vw_risk_group_migration {
+  join: vw_patient_demographics {
+    view_label: "Patient Demographics"
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${vw_risk_group_migration.Unique_id} = ${vw_patient_demographics.unique_id} ;;
+  }
   label: "Risk Group Migration"
 }
 
@@ -44,10 +50,22 @@ explore: vw_risk_group_med_pharma_summary {
 }
 
 explore: vw_medication_possession_ratio {
+  join: vw_patient_demographics {
+    view_label: "Patient Demographics"
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${vw_medication_possession_ratio.unique_id} = ${vw_patient_demographics.unique_id} ;;
+  }
   label: "Medication Possession Ratio"
 }
 
 explore: vw_preventive_screening {
+  join: vw_patient_demographics {
+    view_label: "Patient Demographics"
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${vw_preventive_screening.unique_id} = ${vw_patient_demographics.unique_id} ;;
+  }
   label: "Preventive Screening"
 }
 

@@ -71,7 +71,7 @@ view: ad_hoc_query_tool_medical {
     type: string
     label: "DIAGNOSTIC CATEGORY"
     suggest_explore: vw_medical
-    suggest_dimension: vw_medical.DISEASE_CATEGORY
+    suggest_dimension: vw_medical.icd_disease_category
   }
 
   filter: DISEASE_SUBCATEGORY {
@@ -335,6 +335,15 @@ view: ad_hoc_query_tool_medical {
     sql: ${TABLE}.AGE_GROUP_1 ;;
   }
 
+  dimension: Age_Group {
+    type: tier
+    label: "AGE GROUP-2"
+    tiers: [20, 30, 40, 50, 60]
+    description: "AGE Group>> 0-19, 20-29, 30-39, 40-49, 50-59 & >=60 yrs"
+    style: integer
+    sql:  ${PATIENT_AGE};;
+  }
+
   measure: Total_Billed_Amt_M {
     type: sum
     label: "MED-TOTAL BILLED $"
@@ -464,4 +473,8 @@ view: ad_hoc_query_tool_medical {
     suggest_dimension: vw_pharmacy.ace_inhibitor
   }
 
+  dimension: PARTICIPANT_Flag {
+    type: string
+    sql: ${TABLE}."PARTICIPANT_FLAG" ;;
+  }
 }
